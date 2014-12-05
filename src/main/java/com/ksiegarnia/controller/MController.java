@@ -24,8 +24,8 @@ public class MController {
     }      
     
     @RequestMapping("/*")
-    public ModelAndView indeks(){
-        return new ModelAndView("index");
+    public ModelAndView home(){
+        return new ModelAndView("home");
     }
 
 }
