@@ -22,4 +22,8 @@
 	
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
    
+<bean id="sampleDAO" class="com.ksiegarnia.dao.JdbcSampleDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+    
 </beans>

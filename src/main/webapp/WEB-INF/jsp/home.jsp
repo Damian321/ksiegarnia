@@ -25,7 +25,7 @@
         <script type="text/javascript" src="config/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="config/js/scripts.js"></script>
 
-        <title>Home page</title>
+        <title>Home page: ${kategoria}</title>
 
     </head>
     <body>
