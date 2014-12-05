@@ -5,7 +5,7 @@
  */
 package com.ksiegarnia.controller;
 
-import com.ksiegarnia.dao.JdbcSampleDao;
+import com.ksiegarnia.dao.KategoriaDAO;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MController {
 
-    private JdbcSampleDao sampleDAO;
+    private KategoriaDAO kategoriaDAO;
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
 
@@ -42,23 +42,26 @@ public class MController {
     public ModelAndView category_main() {
         model = new ModelAndView("category_main");
         
-        sampleDAO = new JdbcSampleDao();
+        kategoriaDAO = new KategoriaDAO();
         setUpDataSource();
-        sampleDAO.setDataSource(dataSource); 
+        kategoriaDAO.setDataSource(dataSource); 
         
-        model.addObject("kategoria", sampleDAO.kategoria());
-        
+        model.addObject("kategoria", kategoriaDAO.kategoria());        
         return model;
     }
 
     @RequestMapping("/categorys")
     public ModelAndView category(@RequestParam(value = "name", required = true) int id) {
-        return new ModelAndView("category");
+        model = new ModelAndView("category");
+        
+        return model;
     }
 
     @RequestMapping("/book")
     public ModelAndView book() {
-        return new ModelAndView("book");
+        model = new ModelAndView("book");
+        
+        return model;
     }
 
 }

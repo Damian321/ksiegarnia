@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * @author Damian
  */
 @Repository
-public class JdbcSampleDao {
+public class KategoriaDAO {
 
     private JdbcTemplate jdbcTemplate;
 

@@ -106,19 +106,19 @@
                                     <div class="col-md-8 column">
                                         <dl class="dl-horizontal">
                                             <dt>
-                                            Description lists
+                                            Tytuł
                                             </dt>
                                             <dd>
-                                                A description list is perfect for defining terms.
+                                               Opowieśći z Narni
                                             </dd>
                                             <dt>
-                                            Euismod
+                                            Autor
                                             </dt>
                                             <dd>
-                                                Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+                                                Alfred Nowak
                                             </dd>
                                             <dd>
-                                                Donec id elit non mi porta gravida at eget metus.
+                                                <br>
                                             </dd>
                                             <dt>
                                             Malesuada porta
