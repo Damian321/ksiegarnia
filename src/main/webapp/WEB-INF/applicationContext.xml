@@ -11,15 +11,15 @@
 
     <!--bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="/WEB-INF/jdbc.properties" />
+          p:location="/WEB-INF/jdbc.properties" /-->
 
 <bean id="dataSource"
-    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-    p:driverClassName="${jdbc.driverClassName}"
-    p:url="${jdbc.url}"
-    p:username="${jdbc.username}"
-    p:password="${jdbc.password}" /-->
-
+    class="org.apache.commons.dbcp.BasicDataSource"
+    p:driverClassName="org.apache.derby.jdbc.ClientDriver"
+    p:url="jdbc:derby://localhost:1527/projekt-ksiegarnia"
+    p:username="sa"
+    p:password="sa" />
+	
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
-
+   
 </beans>

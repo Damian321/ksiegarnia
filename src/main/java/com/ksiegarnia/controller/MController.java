@@ -7,6 +7,7 @@ package com.ksiegarnia.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -25,11 +26,12 @@ public class MController {
     public ModelAndView category_main() {
         return new ModelAndView("category_main");
     }
-
+    
     @RequestMapping("/categorys")
-    public ModelAndView category() {
+    public ModelAndView category(@RequestParam(value="name", required=true)int id) {
         return new ModelAndView("category");
     }
+
 
     @RequestMapping("/book")
     public ModelAndView book() {
