@@ -50,9 +50,9 @@ public class MController {
             return model;
         }
         model = new ModelAndView("category");
-        System.out.println(kategoriaDAO.findChildren());
-        model.addObject("kategorie",kategoriaDAO.findChildren());
-        model.addObject("rodzice", kategoriaDAO.findParents());
+
+        model.addObject("kategorie",kategoriaDAO.findChildren(id));
+       model.addObject("rodzice", kategoriaDAO.findParents(id));
         return model;
     }
 
