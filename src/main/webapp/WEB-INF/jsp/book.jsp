@@ -113,13 +113,13 @@
                                             Tytuł
                                             </dt>
                                             <dd>
-                                                Opowieśći z Narni
+                                               
                                             </dd>
                                             <dt>
                                             Autor
                                             </dt>
                                             <dd>
-                                                Alfred Nowak
+                                           
                                             </dd>
                                             <dd>
                                                 <br>

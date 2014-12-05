@@ -111,187 +111,24 @@
                         </div>
                         <div class="col-md-10 column">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="book.htm" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
+                                <c:forEach var="ksiazka" items="${ksiazki}">
+                                    <div class="col-md-2">
+                                        <div class="thumbnail">
+                                            <a href="book.htm?id=${ksiazka.id}" class="thumbnail">
+                                                <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
+                                            </a>
 
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
+                                            <h4>
+                                                ${ksiazka.tytul}
+                                            </h4>
+                                            <p>
+                                                ${ksiazka.autor}
+                                            </p>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
 
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
-                                            <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
-                                        </a>
-
-                                        <h4>
-                                            Na granicy zmysłów
-                                        </h4>
-                                        <p>
-                                            Kossakowski Przemysław
-                                        </p>
-
-                                    </div>
-                                </div>
-
+                                </c:forEach>
                             </div>
                             <ul class="pagination">
                                 <li>

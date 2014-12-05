@@ -6,6 +6,7 @@
 package com.ksiegarnia.controller;
 
 import com.ksiegarnia.dao.KategoriaDAO;
+import com.ksiegarnia.dao.KsiazkaDAO;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class MController {
 
     private KategoriaDAO kategoriaDAO;
+    private KsiazkaDAO ksiazkaDAO;
+    
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
 
@@ -41,8 +44,12 @@ public class MController {
     @RequestMapping("/category")
     public ModelAndView category_main(@RequestParam(value = "id", required = false, defaultValue = "0") int id) {
         kategoriaDAO = new KategoriaDAO();
+        ksiazkaDAO = new KsiazkaDAO();
         setUpDataSource();
+        
         kategoriaDAO.setDataSource(dataSource);
+        ksiazkaDAO.setDataSource(dataSource);
+        
         if (id == 0) {
             model = new ModelAndView("category_main");
 
@@ -53,12 +60,16 @@ public class MController {
 
         model.addObject("kategorie", kategoriaDAO.findChildren(id));
         model.addObject("rodzice", kategoriaDAO.findParents(id));
+        model.addObject("ksiazki", ksiazkaDAO.findAllById(id));
+        System.out.println(ksiazkaDAO.findAllById(id).toString());
         return model;
     }
 
     @RequestMapping("/book")
-    public ModelAndView book() {
+    public ModelAndView book(@RequestParam(value = "id", required = true, defaultValue = "1") int id) {
         model = new ModelAndView("book");
+     //   System.out.println(ksiazkaDAO.findOneById(id).toString());
+      // model.addObject("ksiazka",ksiazkaDAO.findOneById(id).toString());
 
         return model;
     }
