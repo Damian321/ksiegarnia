@@ -6,6 +6,8 @@
 package com.ksiegarnia.controller;
 
 import com.ksiegarnia.dao.KategoriaDAO;
+import com.ksiegarnia.model.Kategoria;
+import java.util.List;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,8 +47,10 @@ public class MController {
         kategoriaDAO = new KategoriaDAO();
         setUpDataSource();
         kategoriaDAO.setDataSource(dataSource); 
+       // List<Kategoria> lista;
+       
         
-        model.addObject("kategoria", kategoriaDAO.kategoria());        
+        model.addObject("kategoria",  kategoriaDAO.findAllParents().toString());        
         return model;
     }
 
