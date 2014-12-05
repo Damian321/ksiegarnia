@@ -3,7 +3,7 @@
     Created on : 2014-12-05, 12:21:52
     Author     : Damian
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -87,14 +87,11 @@
                     <div class="row clearfix">
                         <div class="col-md-2 column">
                             <ul class="list-group">
-
-                                <a href="#" class="list-group-item">${kategoria}</a>
-                                <a href="#" class="list-group-item">Literatura popularnonaukowa</a>
-                                <a href="#" class="list-group-item">Literatura dziecięca</a>
-                                <a href="#" class="list-group-item">Literatura techniczna</a>
-                                <a href="#" class="list-group-item">Literatura obca</a>
-                                <a href="#" class="list-group-item">Literatura dla młodzieży</a>
-                                <a href="#" class="list-group-item">Inne</a>
+                                <c:forEach var="kategoria" items="${kategorie}">
+                                    <a href="category.htm?id=${kategoria.id}" class="list-group-item">
+                                        ${kategoria.nazwa}
+                                    </a>
+                                </c:forEach>
                             </ul>
                         </div>
                         <div class="col-md-10 column">

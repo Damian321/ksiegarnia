@@ -6,8 +6,6 @@
 package com.ksiegarnia.controller;
 
 import com.ksiegarnia.dao.KategoriaDAO;
-import com.ksiegarnia.model.Kategoria;
-import java.util.List;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,46 +23,43 @@ public class MController {
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
 
-    private void setUpDataSource(){
+    private void setUpDataSource() {
         dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
         dataSource.setUrl("jdbc:derby://localhost:1527/projekt-ksiegarnia");
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
     }
-    
+
     @RequestMapping("/home")
     public ModelAndView home() {
-        model = new ModelAndView("home");            
-        
+        model = new ModelAndView("home");
+
         return model;
     }
 
     @RequestMapping("/category")
-    public ModelAndView category_main() {
-        model = new ModelAndView("category_main");
-        
+    public ModelAndView category_main(@RequestParam(value = "id", required = false, defaultValue = "0") int id) {
         kategoriaDAO = new KategoriaDAO();
         setUpDataSource();
-        kategoriaDAO.setDataSource(dataSource); 
-       // List<Kategoria> lista;
-       
-        
-        model.addObject("kategoria",  kategoriaDAO.findAllParents().toString());        
-        return model;
-    }
+        kategoriaDAO.setDataSource(dataSource);
+        if (id == 0) {
+            model = new ModelAndView("category_main");
 
-    @RequestMapping("/categorys")
-    public ModelAndView category(@RequestParam(value = "name", required = true) int id) {
+            model.addObject("kategorie", kategoriaDAO.findFirstNodes());
+            return model;
+        }
         model = new ModelAndView("category");
-        
+        System.out.println(kategoriaDAO.findChildren());
+        model.addObject("kategorie",kategoriaDAO.findChildren());
+        model.addObject("rodzice", kategoriaDAO.findParents());
         return model;
     }
 
     @RequestMapping("/book")
     public ModelAndView book() {
         model = new ModelAndView("book");
-        
+
         return model;
     }
 

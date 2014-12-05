@@ -33,18 +33,28 @@ public class KategoriaDAO {
         return jdbcTemplate.queryForObject(query, String.class);
     }
 
-    public List<Kategoria> findAllParents() {
+    public List<Kategoria> findFirstNodes() {
         query = "select id,nazwa from kategoria where id <=7";
         return jdbcTemplate.query(query, new CategoryMapper());
     }
 
+    public List<Kategoria> findChildren(){
+        query = "select k.ID, k.nazwa from KAT_PATHS kp, KATEGORIA k where k.ID = kp.NODE_ID and kp.parent_id=2 and kp.depth_path=1";
+        return jdbcTemplate.query(query, new CategoryMapper());
+    }
+    
+    public List<Kategoria> findParents(){
+        query = "SELECT k.id, k.nazwa FROM kat_paths kp, kategoria k WHERE k.ID=kp.parent_id AND node_id = 8 ORDER BY depth_path DESC";
+        return jdbcTemplate.query(query, new CategoryMapper());
+    }
+    
     private static final class CategoryMapper implements RowMapper<Kategoria> {
 
         public Kategoria mapRow(ResultSet rs, int rowNum) throws SQLException {
             Kategoria kategoria = new Kategoria();
             kategoria.setId(rs.getInt("id"));
             kategoria.setNazwa(rs.getString("nazwa"));
-            System.out.println(kategoria.toString());
+            
             return kategoria;
         }
     }

@@ -3,7 +3,7 @@
     Created on : 2014-12-05, 12:21:52
     Author     : Damian
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -86,34 +86,30 @@
 
                     </nav>
                     <ul class="breadcrumb">
-                        <li>
-                            <a href="#">Literatura popularnonaukowa</a> <span class="divider"></span>
-                        </li>
-                        <li>
-                            <a href="#">Bajki</a> <span class="divider"></span>
-                        </li>
-                        <li class="active">
-                            Inne
-                        </li>
+                         <c:forEach var="rodzic" items="${rodzice}">
+                             <li>
+                                    <a href="category.htm?id=${rodzic.id}">
+                                        ${rodzic.nazwa}
+                                    </a>
+                                    <span class="divider"></span>
+                             </li>
+                        </c:forEach>
                     </ul>
                     <div class="row clearfix">
                         <div class="col-md-2 column">
                             <ul class="list-group">
-
-                                <a href="#" class="list-group-item">astronomia, astrofizyka</a>
-                                <a href="#" class="list-group-item">biznes, finanse</a>
-                                <a href="#" class="list-group-item">encyklopedie i słowniki</a>
-                                <a href="#" class="list-group-item">ezoteryka, senniki, horoskopy</a>
-                                <a href="#" class="list-group-item">filozofia i etyka</a>
-                                <a href="#" class="list-group-item">flora i fauna</a>
-                                <a href="#" class="list-group-item">Literatura podróżnicza</a>
+                              <c:forEach var="kategoria" items="${kategorie}">
+                                    <a href="category.htm?id=${kategoria.id}" class="list-group-item">
+                                        ${kategoria.nazwa}
+                                    </a>
+                                </c:forEach>
                             </ul>
                         </div>
                         <div class="col-md-10 column">
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="thumbnail">
-                                        <a href="#" class="thumbnail">
+                                        <a href="book.htm" class="thumbnail">
                                             <img alt="300x200" src="http://ecsmedia.pl/c/na-granicy-zmyslow-l-iext26565931.jpg">
                                         </a>
 
