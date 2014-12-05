@@ -23,16 +23,18 @@ public class MController {
 
     @RequestMapping("/home")
     public ModelAndView home() {
+        ModelAndView model = new ModelAndView("home");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
         dataSource.setUrl("jdbc:derby://localhost:1527/projekt-ksiegarnia");
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
-        
-        sampleDAO.setDataSource(dataSource);
-        ModelAndView model = new ModelAndView("home");
 
-        model.addObject("kategoria", sampleDAO.toString());
+        sampleDAO = new JdbcSampleDao();
+        sampleDAO.setDataSource(dataSource);
+     
+        
+        model.addObject("kategoria", sampleDAO.kategoria());
         return model;
     }
 
