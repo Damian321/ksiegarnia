@@ -20,27 +20,35 @@ import org.springframework.web.servlet.ModelAndView;
 public class MController {
 
     private JdbcSampleDao sampleDAO;
+    private DriverManagerDataSource dataSource;
+    private ModelAndView model;
 
-    @RequestMapping("/home")
-    public ModelAndView home() {
-        ModelAndView model = new ModelAndView("home");
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    private void setUpDataSource(){
+        dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
         dataSource.setUrl("jdbc:derby://localhost:1527/projekt-ksiegarnia");
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
-
-        sampleDAO = new JdbcSampleDao();
-        sampleDAO.setDataSource(dataSource);
-     
+    }
+    
+    @RequestMapping("/home")
+    public ModelAndView home() {
+        model = new ModelAndView("home");            
         
-        model.addObject("kategoria", sampleDAO.kategoria());
         return model;
     }
 
     @RequestMapping("/category")
     public ModelAndView category_main() {
-        return new ModelAndView("category_main");
+        model = new ModelAndView("category_main");
+        
+        sampleDAO = new JdbcSampleDao();
+        setUpDataSource();
+        sampleDAO.setDataSource(dataSource); 
+        
+        model.addObject("kategoria", sampleDAO.kategoria());
+        
+        return model;
     }
 
     @RequestMapping("/categorys")

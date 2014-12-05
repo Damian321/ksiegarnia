@@ -88,7 +88,7 @@
                         <div class="col-md-2 column">
                             <ul class="list-group">
 
-                                <a href="#" class="list-group-item">Literatura piękna</a>
+                                <a href="#" class="list-group-item">${kategoria}</a>
                                 <a href="#" class="list-group-item">Literatura popularnonaukowa</a>
                                 <a href="#" class="list-group-item">Literatura dziecięca</a>
                                 <a href="#" class="list-group-item">Literatura techniczna</a>
