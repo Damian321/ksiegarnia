@@ -85,74 +85,78 @@
                         </div>
 
                     </nav>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="http://lorempixel.com/600/200/people">
-                                <div class="caption">
-                                    <h3>
-                                        Nowa powieść S. Kinga dostępna!
-                                    </h3>
-                                    <p>
-                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                    </p>
-                                    <p>
-                                        <a class="btn btn-primary" href="#">Więcej</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="http://lorempixel.com/600/200/city">
-                                <div class="caption">
-                                    <h3>
-                                        Super promocje tylko w tym tygodniu
-                                    </h3>
-                                    <p>
-                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                    </p>
-                                    <p>
-                                        <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="http://lorempixel.com/600/200/sports">
-                                <div class="caption">
-                                    <h3>
-                                        Wielki konkurs
-                                    </h3>
-                                    <p>
-                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                    </p>
-                                    <p>
-                                        <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="container">
                         <div class="row clearfix">
                             <div class="col-md-12 column">
-                                <h2>
-                                    Heading
-                                </h2>
+                                <ul class="breadcrumb">
+                                    <li>
+                                        <a href="#">Home</a> <span class="divider">/</span>
+                                    </li>
+                                    <li>
+                                        <a href="#">Library</a> <span class="divider">/</span>
+                                    </li>
+                                    <li class="active">
+                                        Data
+                                    </li>
+                                </ul>
+                                <div class="row clearfix">
+                                    <div class="col-md-2 column">
+                                        <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+                                    </div>
+                                    <div class="col-md-8 column">
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                            Description lists
+                                            </dt>
+                                            <dd>
+                                                A description list is perfect for defining terms.
+                                            </dd>
+                                            <dt>
+                                            Euismod
+                                            </dt>
+                                            <dd>
+                                                Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+                                            </dd>
+                                            <dd>
+                                                Donec id elit non mi porta gravida at eget metus.
+                                            </dd>
+                                            <dt>
+                                            Malesuada porta
+                                            </dt>
+                                            <dd>
+                                                Etiam porta sem malesuada magna mollis euismod.
+                                            </dd>
+                                            <dt>
+                                            Felis euismod semper eget lacinia
+                                            </dt>
+                                            <dd>
+                                                Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-md-2 column">
+
+                                        <button type="button" class="btn btn-primary">Rezerwacja</button> 
+                                        <h1> </h1>
+                                        <button type="button" class="btn btn-primary">Sprawdź dostępność</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <blockquote>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                    </p> <small>Someone famous <cite>Source Title</cite></small>
+                                </blockquote>
+                                <br>
                                 <p>
-                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                </p>
-                                <p>
-                                    <a class="btn" href="#">View details »</a>
+                                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
                                 </p>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+
         </div>
     </body>
 </html>

@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.ksiegarnia.controller;
-
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,15 +15,25 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class MController {
-    
-    @RequestMapping("/menu")  
-    public ModelAndView menu() {  
-        return new ModelAndView("menu");  
-    }      
-    
-    @RequestMapping("/*")
-    public ModelAndView home(){
+
+    @RequestMapping("/home")
+    public ModelAndView home() {
         return new ModelAndView("home");
+    }
+
+    @RequestMapping("/category")
+    public ModelAndView category_main() {
+        return new ModelAndView("category_main");
+    }
+
+    @RequestMapping("/categorys")
+    public ModelAndView category() {
+        return new ModelAndView("category");
+    }
+
+    @RequestMapping("/book")
+    public ModelAndView book() {
+        return new ModelAndView("book");
     }
 
 }
