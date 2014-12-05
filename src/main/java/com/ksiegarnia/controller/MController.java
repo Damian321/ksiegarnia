@@ -51,8 +51,8 @@ public class MController {
         }
         model = new ModelAndView("category");
 
-        model.addObject("kategorie",kategoriaDAO.findChildren(id));
-       model.addObject("rodzice", kategoriaDAO.findParents(id));
+        model.addObject("kategorie", kategoriaDAO.findChildren(id));
+        model.addObject("rodzice", kategoriaDAO.findParents(id));
         return model;
     }
 
