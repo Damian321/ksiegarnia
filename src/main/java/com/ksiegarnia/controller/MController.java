@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -77,5 +78,26 @@ public class MController {
 
         return model;
     }
-
+@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	public ModelAndView welcomePage() {
+ 
+		model = new ModelAndView();
+		model.addObject("title", "Spring Security Hello World");
+		model.addObject("message", "This is welcome page!");
+		model.setViewName("hello");
+		return model;
+ 
+	}
+ 
+	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
+	public ModelAndView adminPage() {
+ 
+		model = new ModelAndView();
+		model.addObject("title", "Spring Security Hello World");
+		model.addObject("message", "This is protected page!");
+		model.setViewName("admin");
+ 
+		return model;
+ 
+	}
 }
