@@ -7,6 +7,7 @@ package com.ksiegarnia.controller;
 
 import com.ksiegarnia.dao.KategoriaDAO;
 import com.ksiegarnia.dao.KsiazkaDAO;
+import javax.annotation.PostConstruct;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +27,22 @@ public class MController {
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
 
-    private void setUpDataSource() {
+    @PostConstruct
+    public void init(){
         dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
         dataSource.setUrl("jdbc:derby://localhost:1527/projekt-ksiegarnia");
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
+        
+        kategoriaDAO = new KategoriaDAO();
+        ksiazkaDAO = new KsiazkaDAO();
+        
+        kategoriaDAO.setDataSource(dataSource);
+        ksiazkaDAO.setDataSource(dataSource);
     }
+    
+
 
     @RequestMapping("/home")
     public ModelAndView home() {
@@ -42,14 +52,7 @@ public class MController {
     }
 
     @RequestMapping("/category")
-    public ModelAndView category_main(@RequestParam(value = "id", required = false, defaultValue = "0") int id) {
-        kategoriaDAO = new KategoriaDAO();
-        ksiazkaDAO = new KsiazkaDAO();
-        setUpDataSource();
-        
-        kategoriaDAO.setDataSource(dataSource);
-        ksiazkaDAO.setDataSource(dataSource);
-        
+    public ModelAndView category_main(@RequestParam(value = "id", required = false, defaultValue = "0") int id) { 
         if (id == 0) {
             model = new ModelAndView("category_main");
 
@@ -61,7 +64,7 @@ public class MController {
         model.addObject("kategorie", kategoriaDAO.findChildren(id));
         model.addObject("rodzice", kategoriaDAO.findParents(id));
         model.addObject("ksiazki", ksiazkaDAO.findAllById(id));
-        System.out.println(ksiazkaDAO.findAllById(id).toString());
+
         return model;
     }
 
@@ -69,7 +72,8 @@ public class MController {
     public ModelAndView book(@RequestParam(value = "id", required = true, defaultValue = "1") int id) {
         model = new ModelAndView("book");
      //   System.out.println(ksiazkaDAO.findOneById(id).toString());
-      // model.addObject("ksiazka",ksiazkaDAO.findOneById(id).toString());
+       model.addObject("ksiazka",ksiazkaDAO.findOneById(id).get(0));
+       model.addObject("rodzice", kategoriaDAO.findParents(8));
 
         return model;
     }

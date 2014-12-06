@@ -28,15 +28,16 @@ public class KsiazkaDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     
-    public Ksiazka findOneById(int id){
+    public List<Ksiazka> findOneById(int id){
         query = "select * from ksiazka where id = " + id;
-        return jdbcTemplate.queryForObject(query, Ksiazka.class);
+        return jdbcTemplate.query(query, new KsiazkaMapper());
     }
     
     public List<Ksiazka> findAllById(int id) {
         query = "select * from SA.KSIAZKA where id_kat = "+id;
         return jdbcTemplate.query(query, new KsiazkaMapper());
     }
+    
     
     private static final class KsiazkaMapper implements RowMapper<Ksiazka> {
 

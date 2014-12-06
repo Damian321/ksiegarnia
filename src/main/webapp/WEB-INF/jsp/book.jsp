@@ -3,7 +3,7 @@
     Created on : 2014-12-05, 12:21:52
     Author     : Damian
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -93,15 +93,14 @@
                         <div class="row clearfix">
                             <div class="col-md-12 column">
                                 <ul class="breadcrumb">
-                                    <li>
-                                        <a href="#">Home</a> <span class="divider">/</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Library</a> <span class="divider">/</span>
-                                    </li>
-                                    <li class="active">
-                                        Data
-                                    </li>
+                                    <c:forEach var="rodzic" items="${rodzice}">
+                                        <li>
+                                            <a href="category.htm?id=${rodzic.id}">
+                                                ${rodzic.nazwa}
+                                            </a>
+                                            <span class="divider"></span>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                                 <div class="row clearfix">
                                     <div class="col-md-2 column">
@@ -113,28 +112,28 @@
                                             Tytuł
                                             </dt>
                                             <dd>
-                                               
+                                                ${ksiazka.tytul}
                                             </dd>
                                             <dt>
                                             Autor
                                             </dt>
                                             <dd>
-                                           
+                                                ${ksiazka.autor}
                                             </dd>
                                             <dd>
                                                 <br>
                                             </dd>
                                             <dt>
-                                            Malesuada porta
+                                            Liczba stron
                                             </dt>
                                             <dd>
-                                                Etiam porta sem malesuada magna mollis euismod.
+                                                ${ksiazka.liczba_stron}
                                             </dd>
                                             <dt>
-                                            Felis euismod semper eget lacinia
+                                            Rozmiar
                                             </dt>
                                             <dd>
-                                                Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                                                ${ksiazka.rozmiar}
                                             </dd>
                                         </dl>
                                     </div>
@@ -148,12 +147,12 @@
                                 <br>
                                 <blockquote>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                    </p> <small>Someone famous <cite>Source Title</cite></small>
+                                        ${ksiazka.cytat}
+                                    </p> <small>${ksiazka.autor_cytatu}</small>
                                 </blockquote>
                                 <br>
                                 <p>
-                                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+                                    ${ksiazka.opis}
                                 </p>
                             </div>
                         </div>
