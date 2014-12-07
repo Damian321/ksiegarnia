@@ -85,11 +85,11 @@ public class MController {
         
         model = new ModelAndView("login");
         if (error != null) {
-            model.addObject("error", "Invalid username and password!");
+            model.addObject("error", "Niepoprawny login lub hasło!");
         }
 
         if (logout != null) {
-            model.addObject("msg", "You've been logged out successfully.");
+            model.addObject("msg", "Wylogowano się z powodzeniem.");
         }
         return model;
 
