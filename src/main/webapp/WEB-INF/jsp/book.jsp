@@ -143,6 +143,12 @@
                                             <dd>
                                                 ${ksiazka.autor}
                                             </dd>
+                                               <dt>
+                                            ISBN
+                                            </dt>
+                                            <dd>
+                                                ${ksiazka.ISBN}
+                                            </dd>
                                             <dd>
                                                 <br>
                                             </dd>
@@ -153,11 +159,6 @@
                                                 ${ksiazka.liczba_stron}
                                             </dd>
                                             <dt>
-                                            Rozmiar
-                                            </dt>
-                                            <dd>
-                                                ${ksiazka.rozmiar}
-                                            </dd>
                                         </dl>
                                     </div>
                                     <div class="col-md-2 column">

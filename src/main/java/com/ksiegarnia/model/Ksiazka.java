@@ -15,12 +15,12 @@ public class Ksiazka {
     private int id_kat;
     private String tytul;
     private String autor;
+    private String ISBN;
     private String cytat;
     private String opis;
     private String autor_cytatu;
     private int liczba_stron;
-    private String rozmiar;
-    private String obrazek_path;
+
 
     public int getId() {
         return id;
@@ -86,25 +86,17 @@ public class Ksiazka {
         this.liczba_stron = liczba_stron;
     }
 
-    public String getRozmiar() {
-        return rozmiar;
+    public String getISBN() {
+        return ISBN;
     }
 
-    public void setRozmiar(String rozmiar) {
-        this.rozmiar = rozmiar;
-    }
-
-    public String getObrazek_path() {
-        return obrazek_path;
-    }
-
-    public void setObrazek_path(String obrazek_path) {
-        this.obrazek_path = obrazek_path;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     @Override
     public String toString() {
-        return "Ksiazka{" + "id=" + id + ", id_kat=" + id_kat + ", tytul=" + tytul + ", autor=" + autor + ", cytat=" + cytat + ", opis=" + opis + ", autor_cytatu=" + autor_cytatu + ", liczba_stron=" + liczba_stron + ", rozmiar=" + rozmiar + ", obrazek_path=" + obrazek_path + '}';
+        return "Ksiazka{" + "id=" + id + ", id_kat=" + id_kat + ", tytul=" + tytul + ", autor=" + autor + ", ISBN=" + ISBN + ", cytat=" + cytat + ", opis=" + opis + ", autor_cytatu=" + autor_cytatu + ", liczba_stron=" + liczba_stron + '}';
     }
 
 }

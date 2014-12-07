@@ -111,9 +111,23 @@ public class MController {
         return model;
     }
     
-    @RequestMapping("/rejestracja")
-    public ModelAndView rejestracja(){
+    @RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
+    public ModelAndView rejestracja(
+            @RequestParam(value = "login", required = false) String login,
+            @RequestParam(value = "e-mail", required = false) String email,
+            @RequestParam(value = "pass", required = false) String pass,
+            @RequestParam(value = "pass2", required = false) String pass2,
+            @RequestParam(value = "msg", required = false) String msg) {
+        
         model = new ModelAndView("rejestracja");
+        
+        if(msg != null){
+            if(login != null && email != null & pass != null & pass2 != null & pass.equals(pass2)){
+                model.addObject("msg", "Rejestracja udana. Czekaj na akceptację admina."); 
+            }else
+                model.addObject("error", "Niepoprawne dane.");
+        }
+        
         
         return model;
     }

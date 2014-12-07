@@ -44,15 +44,14 @@ public class KsiazkaDAO {
         public Ksiazka mapRow(ResultSet rs, int rowNum) throws SQLException {
             Ksiazka ksiazka = new Ksiazka();
             ksiazka.setId(rs.getInt("id"));
-            ksiazka.setId_kat(rs.getInt("id"));
+            ksiazka.setId_kat(rs.getInt("id_kat"));
+            ksiazka.setISBN(rs.getString("ISBN"));
             ksiazka.setTytul(rs.getString("tytul"));
             ksiazka.setAutor(rs.getString("autor"));
             ksiazka.setCytat(rs.getString("cytat"));
             ksiazka.setAutor_cytatu(rs.getString("autor_cytatu"));
             ksiazka.setOpis(rs.getString("opis"));
-            ksiazka.setLiczba_stron(rs.getInt("id"));
-            ksiazka.setRozmiar(rs.getString("rozmiar"));
-            ksiazka.setObrazek_path(rs.getString("obrazek_path"));
+            ksiazka.setLiczba_stron(rs.getInt("liczba_stron"));
 
             return ksiazka;
         }
