@@ -24,26 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
     private ModelAndView model;
-
-    private KategoriaDAO kategoriaDAO;
-    private KsiazkaDAO ksiazkaDAO;
-
-    private DriverManagerDataSource dataSource;
-
-    @PostConstruct
-    public void init() {
-        dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
-        dataSource.setUrl("jdbc:derby://localhost:1527/projekt-ksiegarnia");
-        dataSource.setUsername("sa");
-        dataSource.setPassword("sa");
-
-        kategoriaDAO = new KategoriaDAO();
-        ksiazkaDAO = new KsiazkaDAO();
-
-        kategoriaDAO.setDataSource(dataSource);
-        ksiazkaDAO.setDataSource(dataSource);
-    }
     
     @RequestMapping("/koszyk")
     public ModelAndView koszyk(){

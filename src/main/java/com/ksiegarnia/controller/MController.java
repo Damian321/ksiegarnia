@@ -94,7 +94,7 @@ public class MController {
 
     }
     
-    @RequestMapping("dostepnosc")
+    @RequestMapping("/dostepnosc")
     public ModelAndView dostepnosc(){
         model = new ModelAndView("dostepnosc");
         
@@ -110,5 +110,11 @@ public class MController {
 
         return model;
     }
-
+    
+    @RequestMapping("/rejestracja")
+    public ModelAndView rejestracja(){
+        model = new ModelAndView("rejestracja");
+        
+        return model;
+    }
 }

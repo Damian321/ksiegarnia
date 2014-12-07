@@ -24,6 +24,7 @@
 		<h2>
 			Welcome : ${pageContext.request.userPrincipal.name} | <a
 				href="javascript:formSubmit()"> Logout</a>
+                                JESTES: ${pageContext.request.userPrincipal.authorities}
 		</h2>
 	</c:if>
  

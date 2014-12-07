@@ -10,9 +10,10 @@
     
 
     <http auto-config="true">
-        <intercept-url pattern="/admin**" access="ROLE_USER" />
-        <intercept-url pattern="/user/*" access="ROLE_USER" />
+        <intercept-url pattern="/user/*" access="ROLE_USER,ROLE_PRACOWNIK" />
         <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/pracownik/*" access="ROLE_PRACOWNIK" />
+        <intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
         <form-login 
             login-page="/login.htm" 
             default-target-url="/home.htm" 
@@ -28,6 +29,7 @@
         <authentication-provider>
             <user-service>
                 <user name="damian@o2.pl" password="123456" authorities="ROLE_USER" />
+                <user name="a@b.pl" password="123" authorities="ROLE_PRACOWNIK" />
             </user-service>
         </authentication-provider>
     </authentication-manager>

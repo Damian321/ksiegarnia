@@ -66,9 +66,14 @@
                                     <input type="text" class="form-control">
                                 </div> <button type="submit" class="btn btn-default">Wyszukaj</button>
                             </form>
-                            <c:choose>
-                                <c:when test="${pageContext.request.userPrincipal.authorities == '[ROLE_USER]'}">
-                                    <ul class="nav navbar-nav navbar-right">
+                            <ul class="nav navbar-nav navbar-right">
+                                <c:if test="${pageContext.request.userPrincipal.authorities == '[ROLE_PRACOWNIK]'}">
+                                    <li>
+                                        <a href="pracownik/panel.htm">Panel pracownika</a>
+                                    </li>         
+                                </c:if>
+                                <c:choose>
+                                    <c:when test="${pageContext.request.userPrincipal.authorities != null}">
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext.request.userPrincipal.name}<strong class="caret"></strong></a>
                                             <ul class="dropdown-menu">
@@ -76,7 +81,7 @@
                                                     <a href="#">Edycja konta</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">Another action</a>
+                                                    <a href="#">fds</a>
                                                 </li>
                                                 <li>
                                                     <a href="#">Something else here</a>
@@ -97,19 +102,17 @@
                                         <li>
                                             <a href=""></a>
                                         </li>
-                                    </ul>
-                                </c:when>
-                                <c:otherwise>
-                                    <ul class="nav navbar-nav navbar-right">
+                                    </c:when>
+                                    <c:otherwise>
                                         <li>
                                             <a href="login.htm">Logowanie</a>
                                         </li>
                                         <li>
-                                            <a href="#">Rejestracja</a>
+                                            <a href="rejestracja.htm">Rejestracja</a>
                                         </li>
-                                    </ul>
-                                </c:otherwise>
-                            </c:choose>
+                                    </c:otherwise>
+                                </c:choose>
+                            </ul>
                         </div>
 
                     </nav>
