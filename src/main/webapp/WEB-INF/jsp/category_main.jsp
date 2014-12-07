@@ -29,6 +29,19 @@
 
     </head>
     <body>
+          <script>
+            function formSubmit() {
+                document.getElementById("logoutForm").submit();
+            }
+        </script>
+        <c:url value="/j_spring_security_logout" var="logoutUrl" />
+
+        <!-- csrt for log out-->
+        <form action="${logoutUrl}" method="post" id="logoutForm">
+            <input type="hidden" 
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}" />
+        </form>
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-12 column">
@@ -41,7 +54,7 @@
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="home.htm">Strona główna</a>
                         </div>
-                         <ul class="nav navbar-nav navbar-left">
+                        <ul class="nav navbar-nav navbar-left">
                             <li>
                                 <a href="category.htm">Książki</a>
                             </li>
@@ -52,14 +65,50 @@
                                     <input type="text" class="form-control">
                                 </div> <button type="submit" class="btn btn-default">Wyszukaj</button>
                             </form>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="#">Logowanie</a>
-                                </li>
-                                <li>
-                                    <a href="#">Rejestracja</a>
-                                </li>
-                            </ul>
+                            <c:choose>
+                                <c:when test="${pageContext.request.userPrincipal.authorities == '[ROLE_USER]'}">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext.request.userPrincipal.name}<strong class="caret"></strong></a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="#">Edycja konta</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Another action</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Something else here</a>
+                                                </li>
+                                                <li class="divider">
+                                                </li>
+                                                <li>
+                                                    <a href="user/koszyk.htm">Koszyk</a>
+                                                </li>
+                                                <li class="divider">
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:formSubmit()"> Wyloguj</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href=""></a>
+                                        </li>
+                                    </ul>
+                                </c:when>
+                                <c:otherwise>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                                            <a href="login.htm">Logowanie</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Rejestracja</a>
+                                        </li>
+                                    </ul>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
 
                     </nav>

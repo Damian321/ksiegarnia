@@ -84,7 +84,7 @@
                                                 <li class="divider">
                                                 </li>
                                                 <li>
-                                                    <a href="#">Koszyk</a>
+                                                    <a href="user/koszyk.htm">Koszyk</a>
                                                 </li>
                                                 <li class="divider">
                                                 </li>
