@@ -76,43 +76,24 @@ public class MController {
 
         return model;
     }
-    
-    @RequestMapping("/login")
-    public ModelAndView login(){
-        model = new ModelAndView("login");
-        return model;
-    }
-    @RequestMapping(value = {"/", "/helloworld**"}, method = RequestMethod.GET)
-    public ModelAndView welcomePage() {
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(
+            @RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "logout", required = false) String logout) {
 
         ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security 3.2.3 Hello World Application");
-        model.addObject("message", "Welcome Page !");
-        model.setViewName("helloworld");
-        return model;
+        if (error != null) {
+            model.addObject("error", "Invalid username and password!");
+        }
 
-    }
-
-    @RequestMapping(value = "/protected**", method = RequestMethod.GET)
-    public ModelAndView protectedPage() {
-
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security 3.2.3 Hello World");
-        model.addObject("message", "This is protected page - Only for Administrators !");
-        model.setViewName("protected");
-        return model;
-
-    }
-
-    @RequestMapping(value = "/confidential**", method = RequestMethod.GET)
-    public ModelAndView superAdminPage() {
-
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security 3.2.3 Hello World");
-        model.addObject("message", "This is confidential page - Need Super Admin Role !");
-        model.setViewName("protected");
+        if (logout != null) {
+            model.addObject("msg", "You've been logged out successfully.");
+        }
+        model.setViewName("login");
 
         return model;
 
     }
+
 }
