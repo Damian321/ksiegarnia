@@ -38,12 +38,12 @@ public class KategoriaDAO {
         return jdbcTemplate.query(query, new CategoryMapper());
     }
 
-    public List<Kategoria> findChildren(int parent_id){
+    public List<Kategoria> findChildren(String parent_id){
         query = "select k.ID, k.nazwa from KAT_PATHS kp, KATEGORIA k where k.ID = kp.NODE_ID and kp.parent_id="+parent_id+" and kp.depth_path=1";
         return jdbcTemplate.query(query, new CategoryMapper());
     }
     
-    public List<Kategoria> findParents(int id){
+    public List<Kategoria> findParents(String id){
         query = "SELECT k.id, k.nazwa FROM kat_paths kp, kategoria k WHERE k.ID=kp.parent_id AND node_id ="+id+" ORDER BY depth_path DESC";
         return jdbcTemplate.query(query, new CategoryMapper());
     }

@@ -20,13 +20,15 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Damian
  */
 @Controller
-public class MController {
+@RequestMapping("/user/*")
+public class UserController {
+
+    private ModelAndView model;
 
     private KategoriaDAO kategoriaDAO;
     private KsiazkaDAO ksiazkaDAO;
 
     private DriverManagerDataSource dataSource;
-    private ModelAndView model;
 
     @PostConstruct
     public void init() {
@@ -45,7 +47,7 @@ public class MController {
 
     @RequestMapping("/home")
     public ModelAndView home() {
-        model = new ModelAndView("home");
+        model = new ModelAndView("user/home");
 
         return model;
     }
@@ -53,12 +55,12 @@ public class MController {
     @RequestMapping("/category")
     public ModelAndView category_main(@RequestParam(value = "id", required = false) String id) {
         if (id == null) {
-            model = new ModelAndView("category_main");
+            model = new ModelAndView("user/category_main");
 
             model.addObject("kategorie", kategoriaDAO.findFirstNodes());
             return model;
         }
-        model = new ModelAndView("category");
+        model = new ModelAndView("user/category");
 
         model.addObject("kategorie", kategoriaDAO.findChildren(id));
         model.addObject("rodzice", kategoriaDAO.findParents(id));
@@ -69,29 +71,12 @@ public class MController {
 
     @RequestMapping("/book")
     public ModelAndView book(@RequestParam(value = "id", required = true, defaultValue = "1") String id) {
-        model = new ModelAndView("book");
-        //   System.out.println(ksiazkaDAO.findOneById(id).toString());
+        model = new ModelAndView("user/book");
+
         model.addObject("ksiazka", ksiazkaDAO.findOneById(id).get(0));
         model.addObject("rodzice", kategoriaDAO.findParents("8"));
 
         return model;
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(
-            @RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "logout", required = false) String logout) {
-
-        model = new ModelAndView("login");
-        if (error != null) {
-            model.addObject("error", "Niepoprawny login lub hasło!");
-        }
-
-        if (logout != null) {
-            model.addObject("msg", "Wylogowano się z powodzeniem.");
-        }
-        return model;
-
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
