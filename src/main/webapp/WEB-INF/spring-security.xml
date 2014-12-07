@@ -8,25 +8,26 @@
            http://www.springframework.org/schema/security/spring-security.xsd">
     
     
-    <http>
-        <intercept-url pattern="/login.htm*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/**" access="ROLE_USER" />
-        <form-login login-page='/login.htm'/>
-    </http>
-    <beans:bean name="bcryptEncoder"
-            class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
+    <http auto-config="true">
+        <intercept-url pattern="/admin**" access="ROLE_USER" />
+        <form-login 
+            login-page="/login" 
+            default-target-url="/welcome" 
+            authentication-failure-url="/login?error" 
+            username-parameter="username"
+            password-parameter="password" />
+        <logout logout-success-url="/login?logout" />
+        <!-- enable csrf protection -->
+        <csrf/>
+    </http>
+ 
     <authentication-manager>
         <authentication-provider>
-            <password-encoder ref="bcryptEncoder"/>
             <user-service>
-                <user name="jimi" password="d7e6351eaa13189a5a3641bab846c8e8c69ba39f"
-            authorities="ROLE_USER, ROLE_ADMIN" />
-                <user name="bob" password="4e7421b1b8765d8f9406d87e7cc6aa784c4ab97f"
-            authorities="ROLE_USER" />
-                   <user name="damian" password="uZ31D9mkcjL8MR97ZgByuOgYqHnEPvsHtnQQXoxu"
-            authorities="ROLE_USER" />
+                <user name="mkyong" password="123456" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
+ 
 </beans:beans>
