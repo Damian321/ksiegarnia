@@ -66,14 +66,12 @@
                     </nav>
                     <form role="form" method="POST" action="<c:url value='j_spring_security_check' />" method='POST'>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Login</label><input type="email" class="form-control" id="exampleInputEmail1" name="username" />
+                            <label for="exampleInputEmail1">Login</label><input type="text" class="form-control" id="exampleInputEmail1" name="username" />
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Hasło</label><input type="password" class="form-control" id="exampleInputPassword1" name="password"/>
                         </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" />Zapamiętaj mnie</label>
-                        </div> <button type="submit" class="btn btn-default">Login</button>
+                         <button type="submit" class="btn btn-default">Login</button>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>
                     <br>

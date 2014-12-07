@@ -64,20 +64,19 @@
                         </div>
 
                     </nav>
-                    <form role="form" method="POST" action="<c:url value='j_spring_security_check' />">
+                    <form role="form" method="POST" action="rejestracja.htm">
                         <div class="form-group">
-                            <label for="exampleInputNick1">Imię i nazwisko lub nick</label><input type="password" class="form-control" id="exampleInputPassword1" name="password"/>
+                            <label for="exampleInputNick1">Login</label><input type="text" class="form-control" id="exampleInputPassword1" name="login"/>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Adres e-mail</label><input type="email" class="form-control" id="exampleInputEmail1" name="username" />
+                            <label for="exampleInputPassword1">Hasło</label><input type="password" class="form-control" id="exampleInputPassword1" name="pass1"/>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Hasło</label><input type="password" class="form-control" id="exampleInputPassword1" name="password"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Powtórz hasło</label><input type="password" class="form-control" id="exampleInputPassword1" name="password"/>
+                            <label for="exampleInputPassword1">Powtórz hasło</label><input type="password" class="form-control" id="exampleInputPassword1" name="pass2"/>
                         </div>
                          <button type="submit" class="btn btn-default">Rejestruj</button>
+                          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                         <input type="hidden" name="msg" value="1">
                     </form>
                     <br>
                     <c:if test="${not empty error}">

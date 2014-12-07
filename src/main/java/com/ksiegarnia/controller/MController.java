@@ -111,18 +111,17 @@ public class MController {
         return model;
     }
     
-    @RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
+    @RequestMapping(value = "/rejestracja")
     public ModelAndView rejestracja(
             @RequestParam(value = "login", required = false) String login,
-            @RequestParam(value = "e-mail", required = false) String email,
-            @RequestParam(value = "pass", required = false) String pass,
+            @RequestParam(value = "pass1", required = false) String pass1,
             @RequestParam(value = "pass2", required = false) String pass2,
             @RequestParam(value = "msg", required = false) String msg) {
         
         model = new ModelAndView("rejestracja");
         
         if(msg != null){
-            if(login != null && email != null & pass != null & pass2 != null & pass.equals(pass2)){
+            if((login != null && pass1 != null && pass2 != null) && pass1.equals(pass2)){
                 model.addObject("msg", "Rejestracja udana. Czekaj na akceptację admina."); 
             }else
                 model.addObject("error", "Niepoprawne dane.");

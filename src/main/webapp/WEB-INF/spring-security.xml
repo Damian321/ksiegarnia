@@ -27,10 +27,7 @@
  
     <authentication-manager>
         <authentication-provider>
-            <user-service>
-                <user name="damian@o2.pl" password="123456" authorities="ROLE_USER" />
-                <user name="a@b.pl" password="123" authorities="ROLE_PRACOWNIK" />
-            </user-service>
+                   <jdbc-user-service data-source-ref="dataSource"/>
         </authentication-provider>
     </authentication-manager>
  
