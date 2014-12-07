@@ -82,7 +82,8 @@ public class MController {
             @RequestParam(value = "error", required = false) String error,
             @RequestParam(value = "logout", required = false) String logout) {
 
-        ModelAndView model = new ModelAndView();
+        
+        model = new ModelAndView("login");
         if (error != null) {
             model.addObject("error", "Invalid username and password!");
         }
@@ -90,8 +91,6 @@ public class MController {
         if (logout != null) {
             model.addObject("msg", "You've been logged out successfully.");
         }
-        model.setViewName("login");
-
         return model;
 
     }

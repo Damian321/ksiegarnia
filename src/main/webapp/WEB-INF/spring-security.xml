@@ -12,9 +12,9 @@
     <http auto-config="true">
         <intercept-url pattern="/admin**" access="ROLE_USER" />
         <form-login 
-            login-page="/login" 
-            default-target-url="/welcome" 
-            authentication-failure-url="/login?error" 
+            login-page="/login.htm" 
+            default-target-url="/home.htm" 
+            authentication-failure-url="/login.htm?error" 
             username-parameter="username"
             password-parameter="password" />
         <logout logout-success-url="/login?logout" />
