@@ -29,7 +29,7 @@
 
     </head>
     <body>
-          <script>
+        <script>
             function formSubmit() {
                 document.getElementById("logoutForm").submit();
             }
@@ -161,10 +161,15 @@
                                         </dl>
                                     </div>
                                     <div class="col-md-2 column">
-
-                                        <button type="button" class="btn btn-primary">Rezerwacja</button> 
+                                        <form action="user/wypozycz.htm" method="GET">
+                                            <button type="submit" class="btn btn-primary">Wypożycz</button> 
+                                            <input type="hidden" name="id" value="2" >
+                                        </form>
                                         <h1> </h1>
-                                        <button type="button" class="btn btn-primary">Sprawdź dostępność</button>
+                                        <form action="dostepnosc.htm" method="GET">
+                                            <button type="submit" class="btn btn-primary">Sprawdź dostępność</button>
+                                             <input type="hidden" name="id" value="2" >
+                                        </form>
                                     </div>
                                 </div>
                                 <br>

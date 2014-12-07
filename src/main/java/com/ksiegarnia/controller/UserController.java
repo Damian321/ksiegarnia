@@ -51,5 +51,11 @@ public class UserController {
         
         return model;
     }
-
+    
+    @RequestMapping("/wypozycz")
+    public ModelAndView wypozycz(){
+        model = new ModelAndView("user/wypozycz");
+        
+        return model;
+    }
 }

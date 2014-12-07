@@ -67,8 +67,6 @@
                                     <input type="text" class="form-control">
                                 </div> <button type="submit" class="btn btn-default">Wyszukaj</button>
                             </form>
-                            <c:if test="${pageContext.request.userPrincipal.authorities == '[ROLE_USER]'}">
-                                ${pageContext.request.userPrincipal.authorities}
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext.request.userPrincipal.name}<strong class="caret"></strong></a>
@@ -99,7 +97,6 @@
                                         <a href=""></a>
                                     </li>
                                 </ul>
-                            </c:if>
                         </div>
 
                     </nav>

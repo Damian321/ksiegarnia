@@ -93,6 +93,13 @@ public class MController {
         return model;
 
     }
+    
+    @RequestMapping("dostepnosc")
+    public ModelAndView dostepnosc(){
+        model = new ModelAndView("dostepnosc");
+        
+        return model;
+    }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView adminPage() {
