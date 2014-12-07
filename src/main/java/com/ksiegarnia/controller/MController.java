@@ -24,26 +24,24 @@ public class MController {
 
     private KategoriaDAO kategoriaDAO;
     private KsiazkaDAO ksiazkaDAO;
-    
+
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
         dataSource.setUrl("jdbc:derby://localhost:1527/projekt-ksiegarnia");
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
-        
+
         kategoriaDAO = new KategoriaDAO();
         ksiazkaDAO = new KsiazkaDAO();
-        
+
         kategoriaDAO.setDataSource(dataSource);
         ksiazkaDAO.setDataSource(dataSource);
     }
-    
-
 
     @RequestMapping("/home")
     public ModelAndView home() {
@@ -53,7 +51,7 @@ public class MController {
     }
 
     @RequestMapping("/category")
-    public ModelAndView category_main(@RequestParam(value = "id", required = false, defaultValue = "0") int id) { 
+    public ModelAndView category_main(@RequestParam(value = "id", required = false, defaultValue = "0") int id) {
         if (id == 0) {
             model = new ModelAndView("category_main");
 
@@ -72,32 +70,49 @@ public class MController {
     @RequestMapping("/book")
     public ModelAndView book(@RequestParam(value = "id", required = true, defaultValue = "1") int id) {
         model = new ModelAndView("book");
-     //   System.out.println(ksiazkaDAO.findOneById(id).toString());
-       model.addObject("ksiazka",ksiazkaDAO.findOneById(id).get(0));
-       model.addObject("rodzice", kategoriaDAO.findParents(8));
+        //   System.out.println(ksiazkaDAO.findOneById(id).toString());
+        model.addObject("ksiazka", ksiazkaDAO.findOneById(id).get(0));
+        model.addObject("rodzice", kategoriaDAO.findParents(8));
 
         return model;
     }
-@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView welcomePage() {
- 
-		model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
-		model.addObject("message", "This is welcome page!");
-		model.setViewName("hello");
-		return model;
- 
-	}
- 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
- 
-		model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
-		model.addObject("message", "This is protected page!");
-		model.setViewName("admin");
- 
-		return model;
- 
-	}
+    
+    @RequestMapping("/login")
+    public ModelAndView login(){
+        model = new ModelAndView("login");
+        return model;
+    }
+    @RequestMapping(value = {"/", "/helloworld**"}, method = RequestMethod.GET)
+    public ModelAndView welcomePage() {
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Spring Security 3.2.3 Hello World Application");
+        model.addObject("message", "Welcome Page !");
+        model.setViewName("helloworld");
+        return model;
+
+    }
+
+    @RequestMapping(value = "/protected**", method = RequestMethod.GET)
+    public ModelAndView protectedPage() {
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Spring Security 3.2.3 Hello World");
+        model.addObject("message", "This is protected page - Only for Administrators !");
+        model.setViewName("protected");
+        return model;
+
+    }
+
+    @RequestMapping(value = "/confidential**", method = RequestMethod.GET)
+    public ModelAndView superAdminPage() {
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Spring Security 3.2.3 Hello World");
+        model.addObject("message", "This is confidential page - Need Super Admin Role !");
+        model.setViewName("protected");
+
+        return model;
+
+    }
 }
