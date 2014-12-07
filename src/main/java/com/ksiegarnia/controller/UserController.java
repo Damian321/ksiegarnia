@@ -44,48 +44,11 @@ public class UserController {
         kategoriaDAO.setDataSource(dataSource);
         ksiazkaDAO.setDataSource(dataSource);
     }
-
-    @RequestMapping("/home")
-    public ModelAndView home() {
-        model = new ModelAndView("user/home");
-
-        return model;
-    }
-
-    @RequestMapping("/category")
-    public ModelAndView category_main(@RequestParam(value = "id", required = false) String id) {
-        if (id == null) {
-            model = new ModelAndView("user/category_main");
-
-            model.addObject("kategorie", kategoriaDAO.findFirstNodes());
-            return model;
-        }
-        model = new ModelAndView("user/category");
-
-        model.addObject("kategorie", kategoriaDAO.findChildren(id));
-        model.addObject("rodzice", kategoriaDAO.findParents(id));
-        model.addObject("ksiazki", ksiazkaDAO.findAllById(id));
-
-        return model;
-    }
-
-    @RequestMapping("/book")
-    public ModelAndView book(@RequestParam(value = "id", required = true, defaultValue = "1") String id) {
-        model = new ModelAndView("user/book");
-
-        model.addObject("ksiazka", ksiazkaDAO.findOneById(id).get(0));
-        model.addObject("rodzice", kategoriaDAO.findParents("8"));
-
-        return model;
-    }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public ModelAndView adminPage() {
-
-        model = new ModelAndView("admin");
-        model.addObject("title", "Spring Security Custom Login Form");
-        model.addObject("message", "This is protected page!");
-
+    
+    @RequestMapping("/koszyk")
+    public ModelAndView koszyk(){
+        model = new ModelAndView("user/koszyk");
+        
         return model;
     }
 
