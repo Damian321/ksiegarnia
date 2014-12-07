@@ -12,13 +12,12 @@ import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Damian
  */
-@Repository
+
 public class KategoriaDAO {
 
     private JdbcTemplate jdbcTemplate;

@@ -5,8 +5,10 @@
  */
 package com.ksiegarnia.controller;
 
+import com.ksiegarnia.dao.AuthoritiesDAO;
 import com.ksiegarnia.dao.KategoriaDAO;
 import com.ksiegarnia.dao.KsiazkaDAO;
+import com.ksiegarnia.dao.UserDAO;
 import javax.annotation.PostConstruct;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,8 @@ public class MController {
 
     private KategoriaDAO kategoriaDAO;
     private KsiazkaDAO ksiazkaDAO;
+    private UserDAO userDAO;
+    private AuthoritiesDAO authoritiesDAO;
 
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
@@ -38,9 +42,13 @@ public class MController {
 
         kategoriaDAO = new KategoriaDAO();
         ksiazkaDAO = new KsiazkaDAO();
+        userDAO = new UserDAO();
+        authoritiesDAO = new AuthoritiesDAO();
 
         kategoriaDAO.setDataSource(dataSource);
         ksiazkaDAO.setDataSource(dataSource);
+        userDAO.setDataSource(dataSource);
+        authoritiesDAO.setDataSource(dataSource);
     }
 
     @RequestMapping("/home")
@@ -122,6 +130,9 @@ public class MController {
         
         if(msg != null){
             if((login != null && pass1 != null && pass2 != null) && pass1.equals(pass2)){
+                userDAO.addUser(login, pass1, Boolean.TRUE);
+                authoritiesDAO.addAuthority(login, "ROLE_USER");
+
                 model.addObject("msg", "Rejestracja udana. Czekaj na akceptację admina."); 
             }else
                 model.addObject("error", "Niepoprawne dane.");

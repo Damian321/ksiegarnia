@@ -10,10 +10,9 @@ package com.ksiegarnia.model;
  *
  * @author Damian
  */
-public class User {
+public class Authorities {
     private String username;
-    private String password;
-    private Boolean enabled;
+    private String authority;
 
     public String getUsername() {
         return username;
@@ -23,25 +22,18 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAuthority() {
+        return authority;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 
     @Override
     public String toString() {
-        return "User{" + "username=" + username + ", password=" + password + ", enabled=" + enabled + '}';
-    }    
+        return "authorities{" + "username=" + username + ", authority=" + authority + '}';
+    }
+    
     
 }
