@@ -96,7 +96,7 @@
                     </nav>
 
                     <h3>
-                        Panel pracownika
+                        Panel administratora
                     </h3>
                     <br>
                     <div class="tabbable" id="tabs-635136">
@@ -105,26 +105,21 @@
                                 <a href="#panel-791964" data-toggle="tab">Książki</a>
                             </li>
                             <li>
-                                <a href="#panel-692676" data-toggle="tab">Wypożyczenia</a>
+                                <a href="#panel-692676" data-toggle="tab">Pracownicy</a>
                             </li>
                             <li>
                                 <a href="#panel-692671" data-toggle="tab">Użytkownicy</a>
                             </li>
+                            <li>
+                                <a href="#panel-692670" data-toggle="tab">Wiadomości</a>
+                            </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="panel-791964">
-                                <p>
-                                    I'm in Section 3.
-                                </p>
-                            </div>
-                            <div class="tab-pane active" id="panel-692671">
-                                <p>
+
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>
-                                                #
-                                            </th>
                                             <th>
                                                 Tytuł
                                             </th>
@@ -140,107 +135,54 @@
                                             <th>
 
                                             </th>
+                                            <th>
+
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Default
-                                            </td>
-                                            <td>
-                                                <a href="#">44324234</a>
-                                            </td>
-                                            <td>
-                                                <a href="#">usuń</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="active">
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Approved
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                02/04/2012
-                                            </td>
-                                            <td>
-                                                Declined
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                03/04/2012
-                                            </td>
-                                            <td>
-                                                Pending
-                                            </td>
-                                        </tr>
-                                        <tr class="danger">
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                04/04/2012
-                                            </td>
-                                            <td>
-                                                Call in to confirm
-                                            </td>
-                                        </tr>
+
+                                        <c:forEach var="ksiazka" items="${lista_ksiazek}">                           
+                                            <tr>
+                                                <td>
+                                                    <a href="../book.htm?id=${ksiazka.id}">${ksiazka.tytul}</a>
+                                                </td>
+                                                <td>
+                                                    ${ksiazka.autor}
+                                                </td>
+                                                <td>
+                                                    ${ksiazka.cena}
+                                                </td>
+                                                <td>
+                                                    ${ksiazka.ISBN}
+                                                </td>
+                                                <td>
+                                                    <a href="#">edycja</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#">usuń</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>                          
                                     </tbody>
                                 </table>
+
                             </div>
                             <div class="tab-pane" id="panel-692676">
-                                <p>
                                 <table class="table">
                                     <thead>
-                                        <tr>
+                                        <tr>                                         
                                             <th>
-                                                #
+                                                Login
                                             </th>
                                             <th>
-                                                Tytuł
+                                                Hasło
                                             </th>
                                             <th>
-                                                Autor
+                                                Aktywność konta
                                             </th>
                                             <th>
-                                                Cena
-                                            </th>
-                                            <th>
-                                                ISBN
+
                                             </th>
                                             <th>
 
@@ -248,87 +190,81 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Default
-                                            </td>
-                                            <td>
-                                                <a href="#">44324234</a>
-                                            </td>
-                                            <td>
-                                                <a href="#">usuń</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="active">
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Approved
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                02/04/2012
-                                            </td>
-                                            <td>
-                                                Declined
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                03/04/2012
-                                            </td>
-                                            <td>
-                                                Pending
-                                            </td>
-                                        </tr>
-                                        <tr class="danger">
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                04/04/2012
-                                            </td>
-                                            <td>
-                                                Call in to confirm
-                                            </td>
-                                        </tr>
+                                        <c:forEach var="pracownik" items="${lista_pracownikow}">                           
+                                            <tr>
+                                                <td>
+                                                    ${pracownik.username}
+                                                </td>
+                                                <td>
+                                                    ${pracownik.password}
+                                                </td>
+                                                <td>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" disabled="disabled"<c:if test="${user.enabled==true}"> checked </c:if>/> 
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#">usuń</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#">edycja</a>
+                                                    </td>
+                                                </tr>
+                                        </c:forEach>                          
                                     </tbody>
                                 </table>
-
                             </div>
+                            <div class="tab-pane" id="panel-692671">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Login
+                                            </th>
+                                            <th>
+                                                Hasło
+                                            </th>
+                                            <th>
+                                                Aktywność konta
+                                            </th>                                         
+                                            <th>
 
+                                            </th>
+                                            <th>
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="user" items="${lista_uzytkownikow}">                           
+                                            <tr>
+                                                <td>
+                                                    ${user.username}
+                                                </td>
+                                                <td>
+                                                    ${user.password}
+                                                </td>
+                                                <td>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" disabled="disabled"<c:if test="${user.enabled==true}"> checked </c:if>/> 
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#">edycja</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#">usuń</a>
+                                                    </td>
+                                                </tr>
+                                        </c:forEach>                          
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="panel-692670">
+                                <p>
+                                    Wiadomości
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

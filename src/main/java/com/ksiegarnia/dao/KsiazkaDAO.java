@@ -27,16 +27,20 @@ public class KsiazkaDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     
-    public List<Ksiazka> findOneById(String id){
-        query = "select * from ksiazka where id = " + id;
+     public List<Ksiazka> findById(String id) {
+        query = "select * from SA.KSIAZKA where id = "+id;
         return jdbcTemplate.query(query, new KsiazkaMapper());
     }
     
-    public List<Ksiazka> findAllById(String id) {
+    public List<Ksiazka> findByKatId(String id) {
         query = "select * from SA.KSIAZKA where id_kat = "+id;
         return jdbcTemplate.query(query, new KsiazkaMapper());
     }
     
+    public List<Ksiazka> findAll(){
+        query = "select * from SA.KSIAZKA";
+        return jdbcTemplate.query(query, new KsiazkaMapper());
+    }
     
     private static final class KsiazkaMapper implements RowMapper<Ksiazka> {
 

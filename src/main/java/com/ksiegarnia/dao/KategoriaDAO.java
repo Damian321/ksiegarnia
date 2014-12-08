@@ -17,7 +17,6 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author Damian
  */
-
 public class KategoriaDAO {
 
     private JdbcTemplate jdbcTemplate;
@@ -27,33 +26,36 @@ public class KategoriaDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public String kategoria() {
-        query = "select nazwa from kategoria k, kat_paths kp where kp.node_id = k.id and parent_id=3 and depth_path=1";
-        return jdbcTemplate.queryForObject(query, String.class);
-    }
-
     public List<Kategoria> findFirstNodes() {
         query = "select id,nazwa from kategoria where id <=7";
         return jdbcTemplate.query(query, new CategoryMapper());
     }
 
-    public List<Kategoria> findChildren(String parent_id){
-        query = "select k.ID, k.nazwa from KAT_PATHS kp, KATEGORIA k where k.ID = kp.NODE_ID and kp.parent_id="+parent_id+" and kp.depth_path=1";
+    public List<Kategoria> findChildren(String parent_id) {
+        query = "select k.ID, k.nazwa from KAT_PATHS kp, KATEGORIA k where k.ID = kp.NODE_ID and kp.parent_id=" + parent_id + " and kp.depth_path=1";
         return jdbcTemplate.query(query, new CategoryMapper());
     }
-    
-    public List<Kategoria> findParents(String id){
-        query = "SELECT k.id, k.nazwa FROM kat_paths kp, kategoria k WHERE k.ID=kp.parent_id AND node_id ="+id+" ORDER BY depth_path DESC";
-        return jdbcTemplate.query(query, new CategoryMapper());
+
+    public List<String> findParents(String id) {
+        query = "SELECT parent_id FROM kat_paths kp, kategoria k WHERE k.ID=kp.NODE_ID and node_id = 9 order by depth_path";
+        List<String> lista = jdbcTemplate.query(query, new RowMapper() {
+            public Object mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getString("parent_id");
+            }
+        });
+        return lista;
     }
     
+
+    
+
     private static final class CategoryMapper implements RowMapper<Kategoria> {
 
         public Kategoria mapRow(ResultSet rs, int rowNum) throws SQLException {
             Kategoria kategoria = new Kategoria();
             kategoria.setId(rs.getInt("id"));
             kategoria.setNazwa(rs.getString("nazwa"));
-            
+
             return kategoria;
         }
     }

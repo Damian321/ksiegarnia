@@ -70,7 +70,7 @@ public class MController {
 
         model.addObject("kategorie", kategoriaDAO.findChildren(id));
         model.addObject("rodzice", kategoriaDAO.findParents(id));
-        model.addObject("ksiazki", ksiazkaDAO.findAllById(id));
+        model.addObject("ksiazki", ksiazkaDAO.findByKatId(id));
 
         return model;
     }
@@ -78,8 +78,8 @@ public class MController {
     @RequestMapping("/book")
     public ModelAndView book(@RequestParam(value = "id", required = true, defaultValue = "1") String id) {
         model = new ModelAndView("book");
-        //   System.out.println(ksiazkaDAO.findOneById(id).toString());
-        model.addObject("ksiazka", ksiazkaDAO.findOneById(id).get(0));
+
+        model.addObject("ksiazka", ksiazkaDAO.findById(id).get(0));
         model.addObject("rodzice", kategoriaDAO.findParents("8"));
 
         return model;
@@ -126,11 +126,11 @@ public class MController {
             @RequestParam(value = "pass2", required = false) String pass2,
             @RequestParam(value = "msg", required = false) String msg) {
         
-        model = new ModelAndView("rejestracja");
+        model = new ModelAndView("/rejestracja");
         
         if(msg != null){
             if((login != null && pass1 != null && pass2 != null) && pass1.equals(pass2)){
-                userDAO.addUser(login, pass1, Boolean.TRUE);
+                userDAO.addUser(login, pass1, Boolean.FALSE);
                 authoritiesDAO.addAuthority(login, "ROLE_USER");
 
                 model.addObject("msg", "Rejestracja udana. Czekaj na akceptację admina."); 

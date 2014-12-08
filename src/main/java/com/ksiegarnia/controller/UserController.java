@@ -56,11 +56,11 @@ public class UserController {
                 koszyk = new Koszyk();
             }
 
-            koszyk.dodajKsiazke(ksiazkaDAO.findOneById(id).get(0));
+            koszyk.dodajKsiazke(ksiazkaDAO.findById(id).get(0));
 
         }
         else if(usun!=null && id!=null){
-            koszyk.usunKsiazke(ksiazkaDAO.findOneById(id).get(0));
+            koszyk.usunKsiazke(ksiazkaDAO.findById(id).get(0));
 
         }
         
