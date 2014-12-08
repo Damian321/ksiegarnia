@@ -42,6 +42,11 @@ public class KsiazkaDAO {
         return jdbcTemplate.query(query, new KsiazkaMapper());
     }
     
+    public String getId_katById(String id){
+        query = "select id_kat from SA.KSIAZKA where id="+id;
+        return jdbcTemplate.queryForObject(query, String.class);
+    }
+    
     private static final class KsiazkaMapper implements RowMapper<Ksiazka> {
 
         public Ksiazka mapRow(ResultSet rs, int rowNum) throws SQLException {

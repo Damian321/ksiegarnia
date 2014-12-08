@@ -9,6 +9,10 @@ import com.ksiegarnia.dao.AuthoritiesDAO;
 import com.ksiegarnia.dao.KategoriaDAO;
 import com.ksiegarnia.dao.KsiazkaDAO;
 import com.ksiegarnia.dao.UserDAO;
+import com.ksiegarnia.model.Kategoria;
+import com.ksiegarnia.model.Ksiazka;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
@@ -69,8 +73,20 @@ public class MController {
         model = new ModelAndView("category");
 
         model.addObject("kategorie", kategoriaDAO.findChildren(id));
-        model.addObject("rodzice", kategoriaDAO.findParents(id));
-        model.addObject("ksiazki", ksiazkaDAO.findByKatId(id));
+
+        List<String> rodzice = new ArrayList<String>();
+        rodzice = kategoriaDAO.findParents(id);
+        List<Ksiazka> ksiazki = new ArrayList<Ksiazka>();
+        List<Kategoria> kategorie = new ArrayList<Kategoria>();
+
+
+        for (String rodzic : rodzice) {
+            ksiazki.addAll(ksiazkaDAO.findByKatId(rodzic));
+            kategorie.addAll(kategoriaDAO.findById(rodzic));
+        }
+
+        model.addObject("rodzice", kategorie);
+        model.addObject("ksiazki", ksiazki);
 
         return model;
     }
@@ -78,9 +94,19 @@ public class MController {
     @RequestMapping("/book")
     public ModelAndView book(@RequestParam(value = "id", required = true, defaultValue = "1") String id) {
         model = new ModelAndView("book");
+        
+        List<String> rodzice = new ArrayList<String>();
+        List<Kategoria> kategorie = new ArrayList<Kategoria>();
+        
+        rodzice = kategoriaDAO.findParents(ksiazkaDAO.getId_katById(id));
+        
+        for (String rodzic : rodzice) {
+            kategorie.addAll(kategoriaDAO.findById(rodzic));
+        }
+        
 
+        model.addObject("rodzice", kategorie);
         model.addObject("ksiazka", ksiazkaDAO.findById(id).get(0));
-        model.addObject("rodzice", kategoriaDAO.findParents("8"));
 
         return model;
     }
@@ -101,11 +127,11 @@ public class MController {
         return model;
 
     }
-    
+
     @RequestMapping("/dostepnosc")
-    public ModelAndView dostepnosc(){
+    public ModelAndView dostepnosc() {
         model = new ModelAndView("dostepnosc");
-        
+
         return model;
     }
 
@@ -118,27 +144,27 @@ public class MController {
 
         return model;
     }
-    
+
     @RequestMapping(value = "/rejestracja")
     public ModelAndView rejestracja(
             @RequestParam(value = "login", required = false) String login,
             @RequestParam(value = "pass1", required = false) String pass1,
             @RequestParam(value = "pass2", required = false) String pass2,
             @RequestParam(value = "msg", required = false) String msg) {
-        
+
         model = new ModelAndView("/rejestracja");
-        
-        if(msg != null){
-            if((login != null && pass1 != null && pass2 != null) && pass1.equals(pass2)){
+
+        if (msg != null) {
+            if ((login != null && pass1 != null && pass2 != null) && pass1.equals(pass2)) {
                 userDAO.addUser(login, pass1, Boolean.FALSE);
                 authoritiesDAO.addAuthority(login, "ROLE_USER");
 
-                model.addObject("msg", "Rejestracja udana. Czekaj na akceptację admina."); 
-            }else
+                model.addObject("msg", "Rejestracja udana. Czekaj na akceptację admina.");
+            } else {
                 model.addObject("error", "Niepoprawne dane.");
+            }
         }
-        
-        
+
         return model;
     }
 }

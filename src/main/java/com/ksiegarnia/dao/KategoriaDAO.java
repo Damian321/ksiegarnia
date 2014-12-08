@@ -26,6 +26,11 @@ public class KategoriaDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    public List<Kategoria> findById(String id){
+        query = "select id,nazwa from kategoria where id ="+id;
+        return jdbcTemplate.query(query, new CategoryMapper());
+    }
+    
     public List<Kategoria> findFirstNodes() {
         query = "select id,nazwa from kategoria where id <=7";
         return jdbcTemplate.query(query, new CategoryMapper());
@@ -37,7 +42,7 @@ public class KategoriaDAO {
     }
 
     public List<String> findParents(String id) {
-        query = "SELECT parent_id FROM kat_paths kp, kategoria k WHERE k.ID=kp.NODE_ID and node_id = 9 order by depth_path";
+        query = "SELECT parent_id FROM kat_paths kp, kategoria k WHERE k.ID=kp.NODE_ID and node_id = "+id+" order by depth_path DESC";
         List<String> lista = jdbcTemplate.query(query, new RowMapper() {
             public Object mapRow(ResultSet resultSet, int i) throws SQLException {
                 return resultSet.getString("parent_id");
