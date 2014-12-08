@@ -162,9 +162,11 @@
                                         </dl>
                                     </div>
                                     <div class="col-md-2 column">
-                                        <form action="user/wypozycz.htm" method="GET">
-                                            <button type="submit" class="btn btn-primary">Wypożycz</button> 
-                                            <input type="hidden" name="id" value="2" >
+                                        <form action="user/koszyk.htm" method="POST">
+                                            <button type="submit" class="btn btn-primary">Dodaj do koszyka</button> 
+                                            <input type="hidden" name="id" value="${ksiazka.id}" >
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                            <input type="hidden" name="username" value=${pageContext.request.userPrincipal.name} />
                                         </form>
                                         <h1> </h1>
                                         <form action="dostepnosc.htm" method="GET">
