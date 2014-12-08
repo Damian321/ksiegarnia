@@ -213,6 +213,7 @@
                                         </c:forEach>                          
                                     </tbody>
                                 </table>
+                                <a href="#">Dodaj pracownika</a>
                             </div>
                             <div class="tab-pane" id="panel-692671">
                                 <table class="table">
