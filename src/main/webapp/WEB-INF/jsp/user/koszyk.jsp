@@ -143,7 +143,7 @@
                                         ${ksiazka.ISBN}
                                     </td>
                                     <td>
-                                        <a href="#">usuń</a>
+                                        <a href="koszyk.htm?usun&id=${ksiazka.id}">usuń</a>
                                     </td>
                                 </tr>
                             </c:forEach>                          

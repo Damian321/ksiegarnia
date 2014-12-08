@@ -107,6 +107,16 @@ public class Ksiazka {
     public String toString() {
         return "Ksiazka{" + "id=" + id + ", id_kat=" + id_kat + ", tytul=" + tytul + ", autor=" + autor + ", ISBN=" + ISBN + ", cytat=" + cytat + ", opis=" + opis + ", autor_cytatu=" + autor_cytatu + ", liczba_stron=" + liczba_stron + ", cena=" + cena + '}';
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+       Ksiazka ksiazka;
 
+        if (obj == null || !(obj instanceof Ksiazka)) { // or you might be more restrictive
+            return false;
+        }
+        ksiazka = (Ksiazka)obj;
+        return ksiazka.getId() == this.getId();
+    }
 
 }
