@@ -51,6 +51,7 @@ public class KsiazkaDAO {
             ksiazka.setAutor_cytatu(rs.getString("autor_cytatu"));
             ksiazka.setOpis(rs.getString("opis"));
             ksiazka.setLiczba_stron(rs.getInt("liczba_stron"));
+            ksiazka.setCena(rs.getDouble("cena"));
 
             return ksiazka;
         }

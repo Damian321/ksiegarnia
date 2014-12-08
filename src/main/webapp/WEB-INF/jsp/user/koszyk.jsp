@@ -54,11 +54,11 @@
                     </div>
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="home.htm">Strona główna</a>
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="../home.htm">Strona główna</a>
                         </div>
                         <ul class="nav navbar-nav navbar-left">
                             <li>
-                                <a href="category.htm">Książki</a>
+                                <a href="../category.htm">Książki</a>
                             </li>
                         </ul>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,40 +67,39 @@
                                     <input type="text" class="form-control">
                                 </div> <button type="submit" class="btn btn-default">Wyszukaj</button>
                             </form>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext.request.userPrincipal.name}<strong class="caret"></strong></a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="#">Edycja konta</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Another action</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Something else here</a>
-                                            </li>
-                                            <li class="divider">
-                                            </li>
-                                            <li>
-                                                <a href="#">Koszyk</a>
-                                            </li>
-                                            <li class="divider">
-                                            </li>
-                                            <li>
-                                                <a href="javascript:formSubmit()"> Wyloguj</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href=""></a>
-                                    </li>
-                                </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext.request.userPrincipal.name}<strong class="caret"></strong></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">Edycja konta</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li>
+                                            <a href="#">Koszyk</a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li>
+                                            <a href="javascript:formSubmit()"> Wyloguj</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href=""></a>
+                                </li>
+                            </ul>
                         </div>
 
                     </nav>
-
                     <table class="table">
                         <thead>
                             <tr>
@@ -117,90 +116,37 @@
                                     Cena
                                 </th>
                                 <th>
-                                   ISBN
+                                    ISBN
                                 </th>
                                 <th>
-                                    
+
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                                <td>
-                                    <a href="#">44324234</a>
-                                </td>
-                                <td>
-                                    <a href="#">usuń</a>
-                                </td>
-                            </tr>
-                            <tr class="active">
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Approved
-                                </td>
-                            </tr>
-                            <tr class="success">
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    02/04/2012
-                                </td>
-                                <td>
-                                    Declined
-                                </td>
-                            </tr>
-                            <tr class="warning">
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    03/04/2012
-                                </td>
-                                <td>
-                                    Pending
-                                </td>
-                            </tr>
-                            <tr class="danger">
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    04/04/2012
-                                </td>
-                                <td>
-                                    Call in to confirm
-                                </td>
-                            </tr>
+ 
+                            <c:forEach var="ksiazka" items="${lista_ksiazek}">                           
+                                <tr>
+                                    <td>
+                                        <a href="../book.htm?id=${ksiazka.id}">#</a>
+                                    </td>
+                                    <td>
+                                        ${ksiazka.tytul}
+                                    </td>
+                                    <td>
+                                        ${ksiazka.autor}
+                                    </td>
+                                    <td>
+                                        ${ksiazka.cena}
+                                    </td>
+                                    <td>
+                                        ${ksiazka.ISBN}
+                                    </td>
+                                    <td>
+                                        <a href="#">usuń</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>                          
                         </tbody>
                     </table>
                 </div>

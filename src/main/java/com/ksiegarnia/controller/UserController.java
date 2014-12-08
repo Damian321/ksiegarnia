@@ -56,9 +56,9 @@ public class UserController {
 
             koszyk.dodajKsiazke(ksiazkaDAO.findOneById(id).get(0));
             
-            model.addObject("koszyk", koszyk.getLista_ksiazek());
+            System.out.println(koszyk.getLista_ksiazek());
         }
-        
+        model.addObject("lista_ksiazek", koszyk.getLista_ksiazek());
         return model;
     }
     

@@ -20,6 +20,7 @@ public class Ksiazka {
     private String opis;
     private String autor_cytatu;
     private int liczba_stron;
+    private double cena;
 
 
     public int getId() {
@@ -94,9 +95,18 @@ public class Ksiazka {
         this.ISBN = ISBN;
     }
 
+    public double getCena() {
+        return cena;
+    }
+
+    public void setCena(double cena) {
+        this.cena = cena;
+    }
+
     @Override
     public String toString() {
-        return "Ksiazka{" + "id=" + id + ", id_kat=" + id_kat + ", tytul=" + tytul + ", autor=" + autor + ", ISBN=" + ISBN + ", cytat=" + cytat + ", opis=" + opis + ", autor_cytatu=" + autor_cytatu + ", liczba_stron=" + liczba_stron + '}';
+        return "Ksiazka{" + "id=" + id + ", id_kat=" + id_kat + ", tytul=" + tytul + ", autor=" + autor + ", ISBN=" + ISBN + ", cytat=" + cytat + ", opis=" + opis + ", autor_cytatu=" + autor_cytatu + ", liczba_stron=" + liczba_stron + ", cena=" + cena + '}';
     }
+
 
 }
