@@ -204,12 +204,12 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <a href="#">usuń</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#">edycja</a>
-                                                    </td>
-                                                </tr>
+                                                        <a href="panel.htm?edycja&username=${pracownik.username}">edycja</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#">usuń</a>
+                                                </td>
+                                            </tr>
                                         </c:forEach>                          
                                     </tbody>
                                 </table>
@@ -251,12 +251,12 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <a href="#">edycja</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#">usuń</a>
-                                                    </td>
-                                                </tr>
+                                                        <a href="panel.htm?edycja&username=${user.username}">edycja</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#">usuń</a>
+                                                </td>
+                                            </tr>
                                         </c:forEach>                          
                                     </tbody>
                                 </table>
@@ -268,6 +268,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <c:if test="${not empty edit_user}">
+                        <form role="form" method="GET" action="panel.htm">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Login</label><input type="text" class="form-control" id="exampleInputEmail1" name=" " disabled="disabled" value="${edit_user.username}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Hasło</label><input type="text" value="${edit_user.password}" class="form-control" id="exampleInputPassword1" name="password"/>
+                            </div>
+                            Aktywność konta: <input type="checkbox" name="active" value="true"/> 
+                            <br>
+                            <button type="submit" class="btn btn-default">Login</button>
+                            <input type="hidden" name="edycja" value="" />
+                            <input type="hidden" name="username" value="${edit_user.username}" />
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        </form>
+                    </c:if>
+
                 </div>
             </div>
         </div>

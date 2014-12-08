@@ -64,7 +64,7 @@
                         </div>
 
                     </nav>
-                    <form role="form" method="POST" action="<c:url value='j_spring_security_check' />" method='POST'>
+                    <form role="form" method="POST" action="<c:url value='j_spring_security_check' />">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Login</label><input type="text" class="form-control" id="exampleInputEmail1" name="username" />
                         </div>

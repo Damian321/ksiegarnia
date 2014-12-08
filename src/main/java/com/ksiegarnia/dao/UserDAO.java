@@ -32,6 +32,12 @@ public class UserDAO {
         jdbcTemplate.execute(query);
     }
     
+    public void editUser(String username, String password, Boolean enabled){
+        query = "UPDATE users SET password='"+password+"', enabled="+enabled+" WHERE username='"+username+"'";
+        
+        jdbcTemplate.execute(query);
+    }
+    
     public List<User> findAllUsers(){
         query = "select u.username, u.password, u.enabled from users u, authorities a where u.USERNAME = a.USERNAME and a.AUTHORITY='ROLE_USER'";
         
@@ -40,6 +46,12 @@ public class UserDAO {
     
     public List<User> findAllEmployees(){
         query = "select u.username, u.password, u.enabled from users u, authorities a where u.USERNAME = a.USERNAME and a.AUTHORITY='ROLE_PRACOWNIK'";
+        
+        return jdbcTemplate.query(query, new UserMapper());
+    }
+    
+    public List<User> findByUsername(String username){
+        query = "select * FROM users where username = '"+username+"'";
         
         return jdbcTemplate.query(query, new UserMapper());
     }
