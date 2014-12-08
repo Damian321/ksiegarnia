@@ -61,10 +61,11 @@
                             </li>
                         </ul>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <form class="navbar-form navbar-right" role="search">
+                            <form class="navbar-form navbar-right" role="search" action="search.htm" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="s" class="form-control">
                                 </div> <button type="submit" class="btn btn-default">Wyszukaj</button>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
                             <ul class="nav navbar-nav navbar-right">
                                 <c:if test="${pageContext.request.userPrincipal.authorities == '[ROLE_PRACOWNIK]'}">

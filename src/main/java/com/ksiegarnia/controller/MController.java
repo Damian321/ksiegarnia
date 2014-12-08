@@ -167,4 +167,31 @@ public class MController {
 
         return model;
     }
+    
+    @RequestMapping("/search")
+    public ModelAndView search(@RequestParam(value="s", required=false) String s){
+        model = new ModelAndView("/category");
+        
+        if(s != null){
+            List<Ksiazka> ksiazki = new ArrayList<Ksiazka>();
+            List<Kategoria> rodzice = new ArrayList<Kategoria>();
+            
+            String[] s_tab = new String[100];
+            s_tab = s.split(" ");
+            
+            for(String e:s_tab){
+                ksiazki.addAll(ksiazkaDAO.FindByTitle(e));
+                ksiazki.addAll(ksiazkaDAO.findByAuthor(e));
+                ksiazki.addAll(ksiazkaDAO.findByISBN(e));
+            }
+            
+            model.addObject("ksiazki", ksiazki);
+            model.addObject("rodzice", rodzice);
+                
+              
+        }
+        
+        return model;
+    }
+ 
 }

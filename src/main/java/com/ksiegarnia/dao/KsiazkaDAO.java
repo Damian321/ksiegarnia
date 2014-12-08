@@ -47,6 +47,21 @@ public class KsiazkaDAO {
         return jdbcTemplate.queryForObject(query, String.class);
     }
     
+    public List<Ksiazka> FindByTitle(String title){
+        query = "select * from SA.KSIAZKA where tytul LIKE '%"+title+"%'";
+        return jdbcTemplate.query(query, new KsiazkaMapper());
+    }
+    
+    public List<Ksiazka> findByAuthor(String author){
+        query = "select * from SA.KSIAZKA where autor LIKE '%"+author+"%'";
+        return jdbcTemplate.query(query, new KsiazkaMapper());
+    }
+    
+    public List<Ksiazka> findByISBN(String isbn){
+        query = "select * from SA.KSIAZKA where isbn LIKE '%"+isbn+"%'";
+        return jdbcTemplate.query(query, new KsiazkaMapper());
+    }
+    
     private static final class KsiazkaMapper implements RowMapper<Ksiazka> {
 
         public Ksiazka mapRow(ResultSet rs, int rowNum) throws SQLException {
