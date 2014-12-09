@@ -10,7 +10,7 @@
     
 
     <http auto-config="true">
-        <intercept-url pattern="/user/*" access="ROLE_USER,ROLE_PRACOWNIK" />
+        <intercept-url pattern="/user/*" access="ROLE_USER,ROLE_PRACOWNIK, ROLE_ADMIN" />
         <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/pracownik/*" access="ROLE_PRACOWNIK" />
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN" />

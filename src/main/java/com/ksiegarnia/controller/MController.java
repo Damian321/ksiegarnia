@@ -8,6 +8,7 @@ package com.ksiegarnia.controller;
 import com.ksiegarnia.dao.AuthoritiesDAO;
 import com.ksiegarnia.dao.KategoriaDAO;
 import com.ksiegarnia.dao.KsiazkaDAO;
+import com.ksiegarnia.dao.NewsDAO;
 import com.ksiegarnia.dao.UserDAO;
 import com.ksiegarnia.model.Kategoria;
 import com.ksiegarnia.model.Ksiazka;
@@ -33,6 +34,7 @@ public class MController {
     private KsiazkaDAO ksiazkaDAO;
     private UserDAO userDAO;
     private AuthoritiesDAO authoritiesDAO;
+    private NewsDAO newsDAO;
 
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
@@ -49,17 +51,20 @@ public class MController {
         ksiazkaDAO = new KsiazkaDAO();
         userDAO = new UserDAO();
         authoritiesDAO = new AuthoritiesDAO();
+        newsDAO = new NewsDAO();
 
         kategoriaDAO.setDataSource(dataSource);
         ksiazkaDAO.setDataSource(dataSource);
         userDAO.setDataSource(dataSource);
         authoritiesDAO.setDataSource(dataSource);
+        newsDAO.setDataSource(dataSource);
     }
 
     @RequestMapping("/home")
     public ModelAndView home() {
         model = new ModelAndView("home");
-
+        model.addObject("newsy", newsDAO.getAll());               
+        
         return model;
     }
 
@@ -129,13 +134,6 @@ public class MController {
 
     }
 
-    @RequestMapping("/dostepnosc")
-    public ModelAndView dostepnosc() {
-        model = new ModelAndView("dostepnosc");
-
-        return model;
-    }
-
     @RequestMapping(value = "/rejestracja")
     public ModelAndView rejestracja(
             @RequestParam(value = "login", required = false) String login,
@@ -169,6 +167,7 @@ public class MController {
             ksiazki.addAll(ksiazkaDAO.FindByTitle(s));
             ksiazki.addAll(ksiazkaDAO.findByAuthor(s));
             ksiazki.addAll(ksiazkaDAO.findByISBN(s));
+            ksiazki.addAll(ksiazkaDAO.findByTag(s));
             
             
             model.addObject("ksiazki", ksiazki);

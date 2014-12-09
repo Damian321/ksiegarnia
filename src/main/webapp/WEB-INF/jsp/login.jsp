@@ -30,6 +30,19 @@
 
     </head>
     <body>
+         <script>
+            function formSubmit() {
+                document.getElementById("logoutForm").submit();
+            }
+        </script>
+        <c:url value="/j_spring_security_logout" var="logoutUrl" />
+
+        <!-- csrt for log out-->
+        <form action="${logoutUrl}" method="post" id="logoutForm">
+            <input type="hidden" 
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}" />
+        </form>
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-12 column">
@@ -48,22 +61,59 @@
                             </li>
                         </ul>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <form class="navbar-form navbar-right" role="search">
+                            <form class="navbar-form navbar-right" role="search" action="search.htm" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="s" class="form-control">
                                 </div> <button type="submit" class="btn btn-default">Wyszukaj</button>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
                             <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="login.htm">Logowanie</a>
-                                </li>
-                                <li>
-                                    <a href="#">Rejestracja</a>
-                                </li>
+                                <c:choose>
+                                <c:when test="${pageContext.request.userPrincipal.authorities == '[ROLE_PRACOWNIK]'}">
+                                    <li>
+                                        <a href="pracownik/panel.htm">Panel Pracownika</a>
+                                    </li>         
+                                </c:when>
+                                    <c:when test="${pageContext.request.userPrincipal.authorities == '[ROLE_ADMIN]'}">
+                                    <li>
+                                        <a href="admin/panel.htm">Panel Administratora</a>
+                                    </li>         
+                                </c:when>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${pageContext.request.userPrincipal.authorities != null}">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext.request.userPrincipal.name}<strong class="caret"></strong></a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="user/koszyk.htm">Koszyk</a>
+                                                </li>
+                                                <li class="divider">
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:formSubmit()"> Wyloguj</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href=""></a>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li>
+                                            <a href="login.htm">Logowanie</a>
+                                        </li>
+                                        <li>
+                                            <a href="rejestracja.htm">Rejestracja</a>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
                             </ul>
                         </div>
 
-                    </nav>
+                    </nav>                 
+                            
                     <form role="form" method="POST" action="<c:url value='j_spring_security_check' />">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Login</label><input type="text" class="form-control" id="exampleInputEmail1" name="username" />

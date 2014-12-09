@@ -29,7 +29,7 @@
 
     </head>
     <body>
-        <script>
+       <script>
             function formSubmit() {
                 document.getElementById("logoutForm").submit();
             }
@@ -60,28 +60,30 @@
                             </li>
                         </ul>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <form class="navbar-form navbar-right" role="search">
+                            <form class="navbar-form navbar-right" role="search" action="search.htm" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="s" class="form-control">
                                 </div> <button type="submit" class="btn btn-default">Wyszukaj</button>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
-                            <c:choose>
-                                <c:when test="${pageContext.request.userPrincipal.authorities == '[ROLE_USER]'}">
-                                    <ul class="nav navbar-nav navbar-right">
+                            <ul class="nav navbar-nav navbar-right">
+                                <c:choose>
+                                <c:when test="${pageContext.request.userPrincipal.authorities == '[ROLE_PRACOWNIK]'}">
+                                    <li>
+                                        <a href="pracownik/panel.htm">Panel Pracownika</a>
+                                    </li>         
+                                </c:when>
+                                    <c:when test="${pageContext.request.userPrincipal.authorities == '[ROLE_ADMIN]'}">
+                                    <li>
+                                        <a href="admin/panel.htm">Panel Administratora</a>
+                                    </li>         
+                                </c:when>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${pageContext.request.userPrincipal.authorities != null}">
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext.request.userPrincipal.name}<strong class="caret"></strong></a>
                                             <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="#">Edycja konta</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Another action</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Something else here</a>
-                                                </li>
-                                                <li class="divider">
-                                                </li>
                                                 <li>
                                                     <a href="user/koszyk.htm">Koszyk</a>
                                                 </li>
@@ -96,22 +98,20 @@
                                         <li>
                                             <a href=""></a>
                                         </li>
-                                    </ul>
-                                </c:when>
-                                <c:otherwise>
-                                    <ul class="nav navbar-nav navbar-right">
+                                    </c:when>
+                                    <c:otherwise>
                                         <li>
                                             <a href="login.htm">Logowanie</a>
                                         </li>
                                         <li>
-                                            <a href="#">Rejestracja</a>
+                                            <a href="rejestracja.htm">Rejestracja</a>
                                         </li>
-                                    </ul>
-                                </c:otherwise>
-                            </c:choose>
+                                    </c:otherwise>
+                                </c:choose>
+                            </ul>
                         </div>
 
-                    </nav>
+                    </nav>                 
                     <div class="container">
                         <div class="row clearfix">
                             <div class="col-md-12 column">

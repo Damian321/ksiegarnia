@@ -42,6 +42,13 @@ public class KsiazkaDAO {
         return jdbcTemplate.query(query, new KsiazkaMapper());
     }
     
+    public List<Ksiazka> findByTag(String nazwa) {
+        query = "select k.ID,k.ID_KAT,k.TYTUL,k.AUTOR,k.CYTAT,k.AUTOR_CYTATU,k.OPIS,k.OPIS,k.LICZBA_STRON,k.ISBN,k.CENA " +
+        "from KSIAZKA k, TAGI_KSIAZKA tk, TAGI t where k.ID = tk.ID_KSIAZKI AND t.ID = tk.ID_TAGU AND t.nazwa='"+nazwa+"'";
+        
+        return jdbcTemplate.query(query, new KsiazkaMapper());
+    }
+    
     public List<Ksiazka> findAll(){
         query = "select * from SA.KSIAZKA";
         return jdbcTemplate.query(query, new KsiazkaMapper());
