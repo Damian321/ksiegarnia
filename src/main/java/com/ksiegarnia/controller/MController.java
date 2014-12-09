@@ -166,14 +166,10 @@ public class MController {
             List<Ksiazka> ksiazki = new ArrayList<Ksiazka>();
             List<Kategoria> rodzice = new ArrayList<Kategoria>();
             
-            String[] s_tab;
-            s_tab = s.split(" ");
+            ksiazki.addAll(ksiazkaDAO.FindByTitle(s));
+            ksiazki.addAll(ksiazkaDAO.findByAuthor(s));
+            ksiazki.addAll(ksiazkaDAO.findByISBN(s));
             
-            for(String e:s_tab){
-                ksiazki.addAll(ksiazkaDAO.FindByTitle(e));
-                ksiazki.addAll(ksiazkaDAO.findByAuthor(e));
-                ksiazki.addAll(ksiazkaDAO.findByISBN(e));
-            }
             
             model.addObject("ksiazki", ksiazki);
             model.addObject("rodzice", rodzice);

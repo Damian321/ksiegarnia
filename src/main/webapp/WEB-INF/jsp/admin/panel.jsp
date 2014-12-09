@@ -160,7 +160,7 @@
                                                     <a href="panel.htm?edycja&id_ksiazki=${ksiazka.id}">edycja</a>
                                                 </td>
                                                 <td>
-                                                    <a href="#">usuń</a>
+                                                    <a href="panel.htm?usun&id_ksiazki=${ksiazka.id}">usuń</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>                          
@@ -207,7 +207,7 @@
                                                         <a href="panel.htm?edycja&username=${pracownik.username}">edycja</a>
                                                 </td>
                                                 <td>
-                                                    <a href="#">usuń</a>
+                                                    <a href="panel.htm?usun&username=${pracownik.username}">usuń</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>                          
@@ -254,7 +254,7 @@
                                                         <a href="panel.htm?edycja&username=${user.username}">edycja</a>
                                                 </td>
                                                 <td>
-                                                    <a href="#">usuń</a>
+                                                    <a href="panel.htm?usun&username=${user.username}">usuń</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>                          

@@ -48,6 +48,7 @@ public class AdminController {
     @RequestMapping("panel.htm")
     public ModelAndView panel(@RequestParam(value="edycja", required=false) String edycja, 
                                 @RequestParam(value="dodaj", required=false) String dodaj,
+                                @RequestParam(value="usun", required=false) String usun,
                                 @RequestParam(value="username", required=false) String username,
                                 @RequestParam(value="id_ksiazki", required=false) String id_ksiazki,
                                 @RequestParam(value="id_newsa", required=false) String id_newsa,
@@ -82,12 +83,19 @@ public class AdminController {
                 userDAO.editUser(username, password, ed);
                 model.clear();
             }else if(isbn!=null){  
-              //  System.out.println(opis + tytul + autor + autor_cytatu + cytat + opis + liczba_stron + isbn +cena);
                 ksiazkaDAO.editById(id_ksiazki, tytul, autor, autor_cytatu, cytat, opis, liczba_stron, isbn, cena);
            
                 model.clear();
             }
             
+        }else if(usun != null){
+            if(username != null){
+                userDAO.deleteUser(username);
+            }else if(id_ksiazki != null){
+                ksiazkaDAO.deleteBook(id_ksiazki);
+            }else if(id_newsa != null){
+                
+            }
         }
         
         model.addObject("lista_ksiazek", ksiazkaDAO.findAll());

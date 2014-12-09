@@ -32,6 +32,14 @@ public class UserDAO {
         jdbcTemplate.execute(query);
     }
     
+    public void deleteUser(String username){                
+        query = "DELETE FROM authorities WHERE username='"+username+"'";
+        jdbcTemplate.execute(query);
+        
+        query = "DELETE FROM users WHERE username='"+username+"'";
+        jdbcTemplate.execute(query);
+    }
+    
     public void editUser(String username, String password, Boolean enabled){
         query = "UPDATE users SET password='"+password+"', enabled="+enabled+" WHERE username='"+username+"'";
         

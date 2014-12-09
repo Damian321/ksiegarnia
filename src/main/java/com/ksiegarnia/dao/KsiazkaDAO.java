@@ -27,6 +27,11 @@ public class KsiazkaDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     
+    public void deleteBook(String id){
+        query = "DELETE FROM ksiazka WHERE id="+id;        
+        jdbcTemplate.execute(query);
+    }
+    
      public List<Ksiazka> findById(String id) {
         query = "select * from SA.KSIAZKA where id = "+id;
         return jdbcTemplate.query(query, new KsiazkaMapper());
