@@ -166,7 +166,7 @@
                                         </c:forEach>                          
                                     </tbody>
                                 </table>
-
+                                <a href="panel.htm?dodaj=ksiazka">Dodaj Książkę</a>
                             </div>
                             <div class="tab-pane" id="panel-692676">
                                 <table class="table">
@@ -213,7 +213,7 @@
                                         </c:forEach>                          
                                     </tbody>
                                 </table>
-                                <a href="#">Dodaj pracownika</a>
+                            <a href="panel.htm?dodaj=pracownik">Dodaj pracownika</a>
                             </div>
                             <div class="tab-pane" id="panel-692671">
                                 <table class="table">
@@ -260,6 +260,7 @@
                                         </c:forEach>                          
                                     </tbody>
                                 </table>
+                                <a href="panel.htm?dodaj=user">Dodaj użytkownika</a>
                             </div>
                             <div class="tab-pane" id="panel-692670">
                                 <p>
@@ -268,7 +269,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <br><br>
                     <c:choose>
                         <c:when test="${not empty edit_user}">
                             <form role="form" method="POST" action="panel.htm">
@@ -283,6 +284,22 @@
                                 <button type="submit" class="btn btn-default">Edytuj</button>
                                 <input type="hidden" name="edycja" value="" />
                                 <input type="hidden" name="username" value="${edit_user.username}" />
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            </form>
+                        </c:when>
+                          <c:when test="${not empty dodaj_usera}">
+                            <form role="form" method="POST" action="panel.htm">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Login</label><input type="text" class="form-control" id="exampleInputEmail1" name="username"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Hasło</label><input type="text" value="" class="form-control" id="exampleInputPassword1" name="password"/>
+                                </div>
+                                Aktywność konta: <input type="checkbox" name="active" value="true"/> 
+                                <br>
+                                <button type="submit" class="btn btn-default">Dodaj</button>
+                                <input type="hidden" name="dodaj_usera" value="${dodaj_usera}" />  
+                                <input type="hidden" name="dodaj" value="1" /> 
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
                         </c:when>

@@ -26,9 +26,11 @@ public class UserDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     
-    public void addUser(String username, String password, Boolean enabled){
+    public void addUser(String username, String password, Boolean enabled, String role){
         query = "INSERT INTO users VALUES ('"+username+"','"+password+"',"+enabled+")";
-
+        jdbcTemplate.execute(query);
+        
+        query = "INSERT INTO authorities VALUES ('"+username+"','"+role+"')";
         jdbcTemplate.execute(query);
     }
     

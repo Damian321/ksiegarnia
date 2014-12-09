@@ -146,8 +146,7 @@ public class MController {
 
         if (msg != null) {
             if ((login != null && pass1 != null && pass2 != null) && pass1.equals(pass2)) {
-                userDAO.addUser(login, pass1, Boolean.FALSE);
-                authoritiesDAO.addAuthority(login, "ROLE_USER");
+                userDAO.addUser(login, pass1, Boolean.FALSE, "ROLE_USER");
 
                 model.addObject("msg", "Rejestracja udana. Czekaj na akceptację admina.");
             } else {

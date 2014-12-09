@@ -96,7 +96,7 @@
                     </nav>
 
                     <h3>
-                        Panel pracownika
+                        Panel administratora
                     </h3>
                     <br>
                     <div class="tabbable" id="tabs-635136">
@@ -113,18 +113,10 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="panel-791964">
-                                <p>
-                                    I'm in Section 3.
-                                </p>
-                            </div>
-                            <div class="tab-pane active" id="panel-692671">
-                                <p>
+
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>
-                                                #
-                                            </th>
                                             <th>
                                                 Tytuł
                                             </th>
@@ -140,107 +132,53 @@
                                             <th>
 
                                             </th>
+                                            <th>
+
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Default
-                                            </td>
-                                            <td>
-                                                <a href="#">44324234</a>
-                                            </td>
-                                            <td>
-                                                <a href="#">usuń</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="active">
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Approved
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                02/04/2012
-                                            </td>
-                                            <td>
-                                                Declined
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                03/04/2012
-                                            </td>
-                                            <td>
-                                                Pending
-                                            </td>
-                                        </tr>
-                                        <tr class="danger">
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                04/04/2012
-                                            </td>
-                                            <td>
-                                                Call in to confirm
-                                            </td>
-                                        </tr>
+
+                                        <c:forEach var="ksiazka" items="${lista_ksiazek}">                           
+                                            <tr>
+                                                <td>
+                                                    <a href="../book.htm?id=${ksiazka.id}">${ksiazka.tytul}</a>
+                                                </td>
+                                                <td>
+                                                    ${ksiazka.autor}
+                                                </td>
+                                                <td>
+                                                    ${ksiazka.cena}
+                                                </td>
+                                                <td>
+                                                    ${ksiazka.ISBN}
+                                                </td>
+                                                <td>
+                                                    <a href="panel.htm?edycja&id_ksiazki=${ksiazka.id}">edycja</a>
+                                                </td>
+                                                <td>
+                                                    <a href="panel.htm?usun&id_ksiazki=${ksiazka.id}">usuń</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>                          
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane" id="panel-692676">
-                                <p>
+                            <div class="tab-pane" id="panel-692671">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th>
-                                                #
+                                                Login
                                             </th>
                                             <th>
-                                                Tytuł
+                                                Hasło
                                             </th>
                                             <th>
-                                                Autor
-                                            </th>
+                                                Aktywność konta
+                                            </th>                                         
                                             <th>
-                                                Cena
-                                            </th>
-                                            <th>
-                                                ISBN
+
                                             </th>
                                             <th>
 
@@ -248,89 +186,86 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Default
-                                            </td>
-                                            <td>
-                                                <a href="#">44324234</a>
-                                            </td>
-                                            <td>
-                                                <a href="#">usuń</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="active">
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                01/04/2012
-                                            </td>
-                                            <td>
-                                                Approved
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                02/04/2012
-                                            </td>
-                                            <td>
-                                                Declined
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                03/04/2012
-                                            </td>
-                                            <td>
-                                                Pending
-                                            </td>
-                                        </tr>
-                                        <tr class="danger">
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                TB - Monthly
-                                            </td>
-                                            <td>
-                                                04/04/2012
-                                            </td>
-                                            <td>
-                                                Call in to confirm
-                                            </td>
-                                        </tr>
+                                        <c:forEach var="user" items="${lista_uzytkownikow}">                           
+                                            <tr>
+                                                <td>
+                                                    ${user.username}
+                                                </td>
+                                                <td>
+                                                    ${user.password}
+                                                </td>
+                                                <td>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" disabled="disabled"<c:if test="${user.enabled==true}"> checked </c:if>/> 
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="panel.htm?edycja&username=${user.username}">edycja</a>
+                                                </td>
+                                                <td>
+                                                    <a href="panel.htm?usun&username=${user.username}">usuń</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>                          
                                     </tbody>
                                 </table>
-
                             </div>
-
                         </div>
                     </div>
+
+                    <c:choose>
+                        <c:when test="${not empty edit_user}">
+                            <form role="form" method="POST" action="panel.htm">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Login</label><input type="text" class="form-control" id="exampleInputEmail1" name=" " disabled="disabled" value="${edit_user.username}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Hasło</label><input type="text" value="${edit_user.password}" class="form-control" id="exampleInputPassword1" name="password"/>
+                                </div>
+                                Aktywność konta: <input type="checkbox" name="active" value="true"/> 
+                                <br>
+                                <button type="submit" class="btn btn-default">Edytuj</button>
+                                <input type="hidden" name="edycja" value="" />
+                                <input type="hidden" name="username" value="${edit_user.username}" />
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            </form>
+                        </c:when>
+                        <c:when test="${not empty edit_book}">
+                            <form role="form" method="GET" action="panel.htm">                           
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tytuł</label><input type="text" class="form-control" id="exampleInputEmail1" name="tytul" value="${edit_book.tytul}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Autor</label><input type="text" value="${edit_book.autor}" class="form-control" id="exampleInputPassword1" name="autor"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword2">Opis</label><TEXTAREA class="form-control" Name="opis" ROWS=7 >${edit_book.opis}</TEXTAREA>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword3">Cytat</label><TEXTAREA class="form-control" Name="cytat" ROWS=4>${edit_book.cytat}</TEXTAREA>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">Autor cytatu</label><input type="text" value="${edit_book.autor_cytatu}" class="form-control" id="exampleInputPassword4" name="autor_cytatu"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword5">Liczba stron</label><input type="text" value="${edit_book.liczba_stron}" class="form-control" id="exampleInputPassword5" name="liczba_stron"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword6">ISBN</label><input type="text" value="${edit_book.ISBN}" class="form-control" id="exampleInputPassword6" name="" disabled="disabled"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword7">Cena</label><input type="text" value="${edit_book.cena}" class="form-control" id="exampleInputPassword7" name="cena"/>
+                            </div>
+                                                     
+                            <button type="submit" class="btn btn-default">Edytuj</button>
+                            <input type="hidden" name="edycja" value="" />
+                             <input type="hidden" name="isbn" value="${edit_book.ISBN}" />
+                            <input type="hidden" name="id_ksiazki" value="${edit_book.id}" />
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        </form>
+                        </c:when>
+                    </c:choose>
+
                 </div>
             </div>
         </div>

@@ -61,11 +61,12 @@ public class AdminController {
                                 @RequestParam(value="autor_cytatu", required=false) String autor_cytatu,
                                 @RequestParam(value="opis", required=false) String opis,
                                 @RequestParam(value="liczba_stron", required=false) String liczba_stron,
-                                @RequestParam(value="cena", required=false) String cena){
+                                @RequestParam(value="cena", required=false) String cena,
+                                @RequestParam(value="dodaj_usera", required=false) String dodaj_usera){
         
         model = new ModelAndView("admin/panel");            
           
-        if(edycja != null || dodaj != null){
+        if(edycja != null){
             if(username != null){
                 model.addObject("edit_user",userDAO.findByUsername(username).get(0));
             }else if(id_ksiazki != null){
@@ -95,6 +96,36 @@ public class AdminController {
                 ksiazkaDAO.deleteBook(id_ksiazki);
             }else if(id_newsa != null){
                 
+            }
+        }else if(dodaj != null){
+            switch (dodaj) {
+                case "user":
+                    model.addObject("dodaj_usera","user");
+                    break;
+                case "pracownik":
+                    model.addObject("dodaj_usera","pracownik");
+                    break;           
+                case "ksiazka":
+                    model.addObject("dodaj_ksiazke","1");
+                    break;
+            }
+            
+            if(dodaj_usera != null){
+                Boolean ed;
+                if(enabled == null)                 ed = Boolean.FALSE;
+                else if(enabled.equals("true"))     ed = Boolean.TRUE;
+                else                                ed = Boolean.FALSE;
+                
+                switch (dodaj_usera){
+                    case "user":
+                        userDAO.addUser(username, password, ed, "ROLE_USER");
+                        break;
+                    case "pracownik":
+                        userDAO.addUser(username, password, ed, "ROLE_PRACOWNIK");
+                        break;
+                }
+                
+                model.clear();
             }
         }
         
