@@ -111,7 +111,7 @@
                                 <a href="#panel-692671" data-toggle="tab">Użytkownicy</a>
                             </li>
                             <li>
-                                <a href="#panel-692670" data-toggle="tab">Wiadomości</a>
+                                <a href="#panel-692670" data-toggle="tab">News</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -213,7 +213,7 @@
                                         </c:forEach>                          
                                     </tbody>
                                 </table>
-                            <a href="panel.htm?dodaj=pracownik">Dodaj pracownika</a>
+                                <a href="panel.htm?dodaj=pracownik">Dodaj pracownika</a>
                             </div>
                             <div class="tab-pane" id="panel-692671">
                                 <table class="table">
@@ -263,9 +263,13 @@
                                 <a href="panel.htm?dodaj=user">Dodaj użytkownika</a>
                             </div>
                             <div class="tab-pane" id="panel-692670">
-                                <p>
-                                    Wiadomości
-                                </p>
+                                <form role="form" method="POST" action="panel.htm">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword2">News</label><TEXTAREA class="form-control" Name="tresc_newsa" ROWS=20 ></TEXTAREA>
+                                        <button type="submit" class="btn btn-default">Dodaj</button>                             
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -287,7 +291,7 @@
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
                         </c:when>
-                          <c:when test="${not empty dodaj_usera}">
+                        <c:when test="${not empty dodaj_usera}">
                             <form role="form" method="POST" action="panel.htm">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Login</label><input type="text" class="form-control" id="exampleInputEmail1" name="username"/>

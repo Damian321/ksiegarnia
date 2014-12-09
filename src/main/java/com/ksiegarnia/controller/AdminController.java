@@ -7,8 +7,9 @@
 package com.ksiegarnia.controller;
 
 import com.ksiegarnia.dao.KsiazkaDAO;
+import com.ksiegarnia.dao.NewsDAO;
 import com.ksiegarnia.dao.UserDAO;
-import com.ksiegarnia.model.User;
+import com.ksiegarnia.model.News;
 import javax.annotation.PostConstruct;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class AdminController {
     private ModelAndView model;
     private KsiazkaDAO ksiazkaDAO;
     private UserDAO userDAO;
+    private NewsDAO newsDAO;
+    private News news;
 
     @PostConstruct
     public void init() {
@@ -40,9 +43,11 @@ public class AdminController {
 
         ksiazkaDAO = new KsiazkaDAO();        
         userDAO = new UserDAO();
-        
+        newsDAO = new NewsDAO();
+                
         ksiazkaDAO.setDataSource(dataSource);
         userDAO.setDataSource(dataSource);
+        newsDAO.setDataSource(dataSource);
     }
     
     @RequestMapping("panel.htm")
@@ -62,7 +67,8 @@ public class AdminController {
                                 @RequestParam(value="opis", required=false) String opis,
                                 @RequestParam(value="liczba_stron", required=false) String liczba_stron,
                                 @RequestParam(value="cena", required=false) String cena,
-                                @RequestParam(value="dodaj_usera", required=false) String dodaj_usera){
+                                @RequestParam(value="dodaj_usera", required=false) String dodaj_usera,
+                                @RequestParam(value="tresc_newsa", required=false) String tresc_newsa){
         
         model = new ModelAndView("admin/panel");            
           
@@ -127,6 +133,8 @@ public class AdminController {
                 
                 model.clear();
             }
+        }else if(tresc_newsa != null){         
+            newsDAO.addNews(tresc_newsa);
         }
         
         model.addObject("lista_ksiazek", ksiazkaDAO.findAll());

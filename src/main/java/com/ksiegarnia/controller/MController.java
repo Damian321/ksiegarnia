@@ -11,6 +11,7 @@ import com.ksiegarnia.dao.KsiazkaDAO;
 import com.ksiegarnia.dao.UserDAO;
 import com.ksiegarnia.model.Kategoria;
 import com.ksiegarnia.model.Ksiazka;
+import com.ksiegarnia.model.News;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
