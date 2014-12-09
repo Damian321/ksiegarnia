@@ -149,7 +149,8 @@
                             </c:forEach>                          
                         </tbody>
                     </table>
-                                    Cena: ${suma}
+                                    Cena: ${suma} <br>
+                                    <a href="koszyk.htm?wypozycz"> Wypożycz </a>
                 </div>
             </div>
         </div>

@@ -80,7 +80,7 @@ public class KsiazkaDAO {
 
         public Ksiazka mapRow(ResultSet rs, int rowNum) throws SQLException {
             Ksiazka ksiazka = new Ksiazka();
-            ksiazka.setId(rs.getInt("id"));
+            ksiazka.setId(rs.getString("id"));
             ksiazka.setId_kat(rs.getInt("id_kat"));
             ksiazka.setISBN(rs.getString("ISBN"));
             ksiazka.setTytul(rs.getString("tytul"));

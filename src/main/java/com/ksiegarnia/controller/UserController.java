@@ -6,8 +6,11 @@
 package com.ksiegarnia.controller;
 
 import com.ksiegarnia.dao.KsiazkaDAO;
+import com.ksiegarnia.dao.WypozyczenieDAO;
 import com.ksiegarnia.model.Koszyk;
 import com.ksiegarnia.model.Ksiazka;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,7 @@ public class UserController {
     private DriverManagerDataSource dataSource;
     private ModelAndView model;
     private KsiazkaDAO ksiazkaDAO;
+    private WypozyczenieDAO wypozyczenieDAO;
     private Koszyk koszyk;
     
 
@@ -38,7 +42,10 @@ public class UserController {
         dataSource.setPassword("sa");
 
         ksiazkaDAO = new KsiazkaDAO();        
+        wypozyczenieDAO = new WypozyczenieDAO();
+        
         ksiazkaDAO.setDataSource(dataSource);
+        wypozyczenieDAO.setDataSource(dataSource);
         
         koszyk = new Koszyk();
     }
@@ -46,7 +53,8 @@ public class UserController {
     @RequestMapping("/koszyk")
     public ModelAndView koszyk(@RequestParam(value = "id", required = false) String id,
                                 @RequestParam(value = "username", required = false) String username,
-                                @RequestParam(value = "usun", required = false) String usun){
+                                @RequestParam(value = "usun", required = false) String usun,
+                                @RequestParam(value = "wypozycz", required = false) String wypozycz){
         model = new ModelAndView("user/koszyk");
         
         if(id != null && usun==null){
@@ -62,17 +70,17 @@ public class UserController {
         else if(usun!=null && id!=null){
             koszyk.usunKsiazke(ksiazkaDAO.findById(id).get(0));
 
+        }else if(wypozycz!=null){
+            List<Ksiazka> doWypozyczenia = new ArrayList<Ksiazka>();
+            doWypozyczenia = koszyk.getLista_ksiazek();
+            
+            for(Ksiazka tmp:doWypozyczenia){
+                wypozyczenieDAO.createWypozyczenie(tmp.getId(),koszyk.getUsername(),"czeka na odbiór");
+            }
         }
         
         model.addObject("suma",koszyk.getSuma());
         model.addObject("lista_ksiazek", koszyk.getLista_ksiazek());
-        return model;
-    }
-    
-    @RequestMapping("/wypozycz")
-    public ModelAndView wypozycz(){
-        model = new ModelAndView("user/wypozycz");
-        
         return model;
     }
 }

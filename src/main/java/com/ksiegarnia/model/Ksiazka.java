@@ -11,7 +11,7 @@ package com.ksiegarnia.model;
  */
 public class Ksiazka {
 
-    private int id;
+    private String id;
     private int id_kat;
     private String tytul;
     private String autor;
@@ -23,11 +23,11 @@ public class Ksiazka {
     private double cena;
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
