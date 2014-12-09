@@ -64,6 +64,7 @@ public class UserController {
 
         }
         
+        model.addObject("suma",koszyk.getSuma());
         model.addObject("lista_ksiazek", koszyk.getLista_ksiazek());
         return model;
     }

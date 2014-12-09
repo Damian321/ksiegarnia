@@ -149,6 +149,7 @@
                             </c:forEach>                          
                         </tbody>
                     </table>
+                                    Cena: ${suma}
                 </div>
             </div>
         </div>
