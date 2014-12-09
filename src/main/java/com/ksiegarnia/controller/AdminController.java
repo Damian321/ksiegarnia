@@ -52,23 +52,23 @@ public class AdminController {
                                 @RequestParam(value="id_ksiazki", required=false) String id_ksiazki,
                                 @RequestParam(value="id_newsa", required=false) String id_newsa,
                                 @RequestParam(value="password", required=false) String password,
-                                @RequestParam(value="active", required=false) String enabled){
+                                @RequestParam(value="active", required=false) String enabled,
+                                @RequestParam(value="isbn", required=false) String isbn,
+                                @RequestParam(value="tytul", required=false) String tytul,
+                                @RequestParam(value="autor", required=false) String autor,
+                                @RequestParam(value="cytat", required=false) String cytat,
+                                @RequestParam(value="autor_cytatu", required=false) String autor_cytatu,
+                                @RequestParam(value="opis", required=false) String opis,
+                                @RequestParam(value="liczba_stron", required=false) String liczba_stron,
+                                @RequestParam(value="cena", required=false) String cena){
         
         model = new ModelAndView("admin/panel");            
-        
-        if(dodaj != null){
-            if(username != null){
-                
-            }else if(id_ksiazki != null){
-                
-            }else if(id_newsa != null){
-                
-            }     
-        }else if(edycja != null){
+          
+        if(edycja != null || dodaj != null){
             if(username != null){
                 model.addObject("edit_user",userDAO.findByUsername(username).get(0));
             }else if(id_ksiazki != null){
-                                
+                model.addObject("edit_book",ksiazkaDAO.findById(id_ksiazki).get(0));
             }else if(id_newsa != null){
                 
             }
@@ -80,7 +80,12 @@ public class AdminController {
                 else                            ed = Boolean.FALSE;
                 
                 userDAO.editUser(username, password, ed);
-                model.addObject("edit_user",userDAO.findByUsername(username).get(0));
+                model.clear();
+            }else if(isbn!=null){  
+              //  System.out.println(opis + tytul + autor + autor_cytatu + cytat + opis + liczba_stron + isbn +cena);
+                ksiazkaDAO.editById(id_ksiazki, tytul, autor, autor_cytatu, cytat, opis, liczba_stron, isbn, cena);
+           
+                model.clear();
             }
             
         }

@@ -62,6 +62,15 @@ public class KsiazkaDAO {
         return jdbcTemplate.query(query, new KsiazkaMapper());
     }
     
+    public void editById(String id,String tytul,String autor,String autor_cytatu,
+            String cytat, String opis,String liczba_stron,String isbn,String cena){
+        query = "UPDATE ksiazka SET tytul='"+tytul+"',autor='"+autor+"',cytat='"+cytat+"',"
+                + "autor_cytatu='"+autor_cytatu+"',opis='"+opis+"',liczba_stron="+liczba_stron+",isbn='"+isbn+"',"
+                + "cena="+cena+" WHERE id="+id;
+        
+        jdbcTemplate.execute(query);
+    }
+    
     private static final class KsiazkaMapper implements RowMapper<Ksiazka> {
 
         public Ksiazka mapRow(ResultSet rs, int rowNum) throws SQLException {
