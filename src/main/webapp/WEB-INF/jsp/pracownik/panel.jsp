@@ -96,7 +96,7 @@
                     </nav>
 
                     <h3>
-                        Panel administratora
+                        Panel pracownika
                     </h3>
                     <br>
                     <div class="tabbable" id="tabs-635136">
@@ -210,6 +210,50 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="tab-pane" id="panel-692676">
+                                 <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Książka
+                                            </th>
+                                            <th>
+                                                Użytkownik
+                                            </th>
+                                            <th>
+                                                Stan
+                                            </th>                                         
+                                            <th>
+
+                                            </th>
+                                            <th>
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="wyp" items="${wypozyczenia}">                           
+                                            <tr>
+                                                <td>
+                                                    <a href="../book.htm?id=${wyp.id_ksiazki}">${wyp.id_ksiazki}</a>
+                                                </td>
+                                                <td>
+                                                    ${wyp.username}
+                                                </td>     
+                                                <td>
+                                                    ${wyp.stan}
+                                                </td>
+                                                <td>
+                                                        <a href="panel.htm?edycja&id=${wyp.id}">edycja</a>
+                                                </td>
+                                                <td>
+                                                    <a href="panel.htm?usun&id=${wyp.id}">usuń</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>                          
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -227,6 +271,25 @@
                                 <button type="submit" class="btn btn-default">Edytuj</button>
                                 <input type="hidden" name="edycja" value="" />
                                 <input type="hidden" name="username" value="${edit_user.username}" />
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            </form>
+                        </c:when>
+                          <c:when test="${not empty wypo}">
+                            <form role="form" method="POST" action="panel.htm">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">ID książki</label><input type="text" disabled="disabled" class="form-control" id="exampleInputEmail1" name=" " value="${wypo.id_ksiazki}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Login użytkownika</label><input type="text" disabled="disabled" value="${wypo.username}" class="form-control" id="exampleInputPassword1" name="username"/>
+                                </div> 
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Stan</label><input type="text" value="${wypo.stan}" class="form-control" id="exampleInputPassword1" name="stan"/>
+                                </div>
+                                
+                                <br>
+                                <button type="submit" class="btn btn-default">Edytuj</button>
+                                <input type="hidden" name="edycja" value="" />
+                                <input type="hidden" name="id" value="${wypo.id}" />
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
                         </c:when>

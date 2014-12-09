@@ -12,7 +12,7 @@ package com.ksiegarnia.model;
  */
 public class Wypozyczenie {
     private int id;
-    private int id_ksiazki;
+    private String id_ksiazki;
     private String username;
     private String stan;
 
@@ -24,11 +24,11 @@ public class Wypozyczenie {
         this.id = id;
     }
 
-    public int getId_ksiazki() {
+    public String getId_ksiazki() {
         return id_ksiazki;
     }
 
-    public void setId_ksiazki(int id_ksiazki) {
+    public void setId_ksiazki(String id_ksiazki) {
         this.id_ksiazki = id_ksiazki;
     }
 

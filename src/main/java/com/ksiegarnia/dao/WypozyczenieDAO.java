@@ -26,6 +26,11 @@ public class WypozyczenieDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     
+    public List<Wypozyczenie> findAll(){
+        query = "SELECT * FROM wypozyczenia";
+        return jdbcTemplate.query(query, new WypozyczenieMapper());
+    }
+    
     public List<Wypozyczenie> findById(String id){
         query = "SELECT * FROM wypozyczenia WHERE id="+id;
         return jdbcTemplate.query(query, new WypozyczenieMapper());
@@ -36,8 +41,11 @@ public class WypozyczenieDAO {
         return jdbcTemplate.query(query, new WypozyczenieMapper());
     }
     
-    public void setById(String id, String stan, String id_ksiazki, String username){
-    }
+    public void setById(String id, String stan){
+        query = "UPDATE wypozyczenia SET stan='"+stan+"' WHERE id="+id;
+        this.jdbcTemplate.execute(query);
+    } 
+        
     
     public void createWypozyczenie(String id_ksiazki, String username, String stan){
         query = "INSERT INTO wypozyczenia(id_ksiazki, username, stan) VALUES("+id_ksiazki+",'"+username+"','"+stan+"')";
@@ -49,7 +57,7 @@ public class WypozyczenieDAO {
         public Wypozyczenie mapRow(ResultSet rs, int rowNum) throws SQLException {
             Wypozyczenie wypozyczenie = new Wypozyczenie();
             wypozyczenie.setId(rs.getInt("id"));
-            wypozyczenie.setId_ksiazki(rs.getInt("id_ksiazki"));
+            wypozyczenie.setId_ksiazki(rs.getString("id_ksiazki"));
             wypozyczenie.setStan(rs.getString("stan"));
             wypozyczenie.setUsername(rs.getString("username"));
             
